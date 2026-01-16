@@ -1,4 +1,5 @@
 import { Facebook, Twitter, Instagram, Linkedin, Mail } from 'lucide-react'
+import { logos, getImageUrl } from '@/lib/images'
 
 export default function Footer() {
   const currentYear = new Date().getFullYear()
@@ -25,11 +26,12 @@ export default function Footer() {
         <div className="grid md:grid-cols-4 gap-8">
           {/* Logo and Description */}
           <div className="md:col-span-2">
-            <div className="flex items-center space-x-2 mb-4">
-              <div className="w-10 h-10 bg-primary-600 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-xl">S</span>
-              </div>
-              <span className="text-xl font-bold text-white">SAMPRE</span>
+            <div className="flex items-center mb-4">
+              <img
+                src={getImageUrl(logos.main)}
+                alt={logos.main.alt}
+                className="h-16 w-auto object-contain brightness-0 invert"
+              />
             </div>
             <p className="text-gray-400 mb-4 max-w-md">
               Sociedad Argentina de Medicina Prehospitalaria - Promoviendo la excelencia en atención

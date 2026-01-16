@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { Menu, X } from 'lucide-react'
+import { logos, getImageUrl } from '@/lib/images'
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -20,12 +21,13 @@ export default function Header() {
       <nav className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <div className="flex items-center space-x-2">
-            <div className="w-10 h-10 bg-primary-600 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-xl">S</span>
-            </div>
-            <span className="text-xl font-bold text-gray-900">SAMPRE</span>
-          </div>
+          <a href="#inicio" className="flex items-center space-x-3">
+            <img
+              src={getImageUrl(logos.main)}
+              alt={logos.main.alt}
+              className="h-12 w-auto object-contain"
+            />
+          </a>
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex space-x-6">

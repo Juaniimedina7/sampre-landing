@@ -140,10 +140,10 @@ export default function UpcomingEvents() {
         {/* CTA para ver más eventos */}
         <div className="mt-12 text-center">
           <a
-            href="#contacto"
-            className="inline-flex items-center text-primary-600 hover:text-primary-700 font-semibold"
+            href="/eventos"
+            className="inline-flex items-center px-6 py-3 bg-primary-600 text-white font-semibold rounded-lg hover:bg-primary-700 transition-all shadow-lg hover:shadow-xl hover:scale-105"
           >
-            Ver calendario completo
+            Ver eventos pasados
             <ArrowRight className="ml-2 w-5 h-5" />
           </a>
         </div>

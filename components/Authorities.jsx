@@ -88,7 +88,7 @@ export default function Authorities() {
         {/* Additional Board Info */}
         <div className="mt-16 max-w-4xl mx-auto bg-primary-50 rounded-2xl p-8 border-l-4 border-primary-600">
           <h3 className="text-xl font-bold text-gray-900 mb-3">
-            Período 2024-2026
+            Período 2026-2028
           </h3>
           <p className="text-gray-700 leading-relaxed">
             La Comisión Directiva de SAMPRE trabaja de manera continua para promover los más altos

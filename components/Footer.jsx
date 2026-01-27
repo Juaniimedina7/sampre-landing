@@ -1,4 +1,4 @@
-import { Facebook, Twitter, Instagram, Linkedin, Mail } from 'lucide-react'
+import { Facebook, Instagram, Youtube, Mail } from 'lucide-react'
 import { logos, getImageUrl } from '@/lib/images'
 
 export default function Footer() {
@@ -14,10 +14,9 @@ export default function Footer() {
   ]
 
   const socialLinks = [
-    { icon: Facebook, href: '#', label: 'Facebook' },
-    { icon: Twitter, href: '#', label: 'Twitter' },
-    { icon: Instagram, href: '#', label: 'Instagram' },
-    { icon: Linkedin, href: '#', label: 'LinkedIn' },
+    { icon: Instagram, href: 'https://www.instagram.com/sampre_argentina', label: 'Instagram' },
+    { icon: Facebook, href: 'https://www.facebook.com/SAMPREoficial', label: 'Facebook' },
+    { icon: Youtube, href: 'https://www.youtube.com/@samprearg8206', label: 'YouTube' },
   ]
 
   return (
@@ -34,8 +33,7 @@ export default function Footer() {
               />
             </div>
             <p className="text-gray-400 mb-4 max-w-md">
-              Sociedad Argentina de Medicina Prehospitalaria - Promoviendo la excelencia en atención
-              médica de emergencias desde hace más de 20 años.
+              Sociedad Argentina de Medicina Prehospitalaria
             </p>
             <div className="flex items-center space-x-2 text-gray-400">
               <Mail className="w-5 h-5" />
@@ -72,6 +70,8 @@ export default function Footer() {
                   <a
                     key={social.label}
                     href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     aria-label={social.label}
                     className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-primary-600 transition-colors"
                   >

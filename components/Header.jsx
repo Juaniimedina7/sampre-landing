@@ -11,7 +11,8 @@ export default function Header() {
     { href: '#inicio', label: 'Inicio' },
     { href: '#sobre-nosotros', label: 'Sobre Nosotros' },
     { href: '#servicios', label: 'Servicios' },
-    { href: '#proximos-eventos', label: 'Próximos Eventos' },
+    { href: '#proximos-eventos', label: 'Eventos' },
+    { href: '#comites', label: 'Comités' },
     { href: '#autoridades', label: 'Autoridades' },
     { href: '#contacto', label: 'Contacto' },
   ]

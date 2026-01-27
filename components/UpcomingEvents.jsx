@@ -4,37 +4,40 @@ import { eventImages, getImageUrl } from '@/lib/images'
 export default function UpcomingEvents() {
   const events = [
     {
-      title: 'XXVIII Congreso Argentino de Medicina Prehospitalaria',
-      date: '15-17 Noviembre 2026',
-      location: 'Buenos Aires, Argentina',
+      title: 'Rally Prehospitalario SAMPRE 2026',
+      date: '12-13 Septiembre 2026',
+      location: 'Universidad Nacional Arturo Jauretche (UNAJ)',
       time: '09:00 - 18:00 hs',
-      attendees: '500+',
-      description: 'El evento más importante de medicina prehospitalaria en Argentina. Conferencias magistrales, talleres prácticos y actualización científica.',
-      category: 'Congreso',
+      attendees: '8-16 equipos',
+      description: 'Competencia académica organizada por SAMPRE con escenarios simulados de emergencias prehospitalarias. Los equipos compiten en el manejo de situaciones de emergencia realistas. Inscripción: $100.000 ARS (equipos nacionales) / USD 100 (equipos internacionales).',
+      category: 'Competencia Académica',
       featured: true,
-      image: getImageUrl(eventImages.congreso2026),
+      image: getImageUrl(eventImages.rallyPrehospitalario2026),
+      website: null,
     },
     {
-      title: 'Curso de Soporte Vital Avanzado en Trauma',
-      date: '20-21 Septiembre 2026',
-      location: 'Rosario, Santa Fe',
-      time: '08:00 - 17:00 hs',
-      attendees: '40',
-      description: 'Capacitación intensiva en manejo avanzado de trauma prehospitalario con certificación internacional.',
-      category: 'Curso',
+      title: 'V Congreso Latinoamericano de Emergencias Prehospitalarias',
+      date: '27-30 Mayo 2026',
+      location: 'Lima, Perú',
+      time: '27 mayo pre-congreso, 28-30 mayo congreso',
+      attendees: '500+',
+      description: 'Congreso internacional auspiciado por SAMPRE, organizado por CCES SALUD con acreditación de 3 créditos por la Facultad de Medicina Humana de la UNSM. Aborda ejes temáticos como gestión de riesgos y desastres, trauma, emergencias cardiovasculares, innovación y tecnología en APH, y escenarios especiales.',
+      category: 'Auspicio Internacional',
       featured: false,
-      image: getImageUrl(eventImages.cursoTrauma),
+      image: getImageUrl(eventImages.congresoLatam2026),
+      website: 'https://cces-salud.com/eventos/v-congreso-latinoamericano-emergencias-prehospitalarias/',
     },
     {
-      title: 'Jornada de Emergencias Cardiovasculares',
-      date: '5 Octubre 2026',
-      location: 'Córdoba, Córdoba',
-      time: '09:00 - 14:00 hs',
-      attendees: '150',
-      description: 'Actualización en protocolos de atención de emergencias cardiovasculares y manejo del síndrome coronario agudo.',
-      category: 'Jornada',
+      title: 'I Congreso Internacional Multidisciplinario EMERGENCIAS 360°',
+      date: '26 Marzo 2026',
+      location: 'Arequipa, Perú',
+      time: 'Modalidad Virtual y Presencial',
+      attendees: '300+',
+      description: 'Congreso multidisciplinario auspiciado por SAMPRE enfocado en transformar la medicina de emergencia del siglo XXI. Aborda manejo de pacientes críticos, inteligencia artificial en salud, gestión operativa, escenarios simulados y protocolos de manejo clínico.',
+      category: 'Auspicio Internacional',
       featured: false,
-      image: getImageUrl(eventImages.jornadaCardiovascular),
+      image: getImageUrl(eventImages.emergencias360),
+      website: null,
     },
   ]
 
@@ -61,22 +64,20 @@ export default function UpcomingEvents() {
               className={`bg-white rounded-xl overflow-hidden shadow-md hover:shadow-2xl transition-all border-l-4 ${
                 event.featured
                   ? 'border-primary-600 md:flex'
-                  : 'border-secondary-500'
+                  : 'border-secondary-500 md:flex'
               }`}
             >
               {/* Image */}
-              {event.featured && (
-                <div className="md:w-1/3 h-64 md:h-auto">
-                  <img
-                    src={event.image}
-                    alt={event.title}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-              )}
+              <div className={`${event.featured ? 'md:w-1/2' : 'md:w-1/4'} h-64 md:h-auto`}>
+                <img
+                  src={event.image}
+                  alt={event.title}
+                  className="w-full h-full object-cover"
+                />
+              </div>
 
               {/* Content */}
-              <div className={`p-6 md:p-8 ${event.featured ? 'md:w-2/3' : ''}`}>
+              <div className={`p-6 md:p-8 ${event.featured ? 'md:w-1/2' : 'md:w-3/4'}`}>
                 <div className="flex items-center gap-3 mb-3">
                   <span
                     className={`px-3 py-1 rounded-full text-xs font-semibold ${
@@ -124,13 +125,21 @@ export default function UpcomingEvents() {
                 </div>
 
                 <div className="flex gap-3">
-                  <button className="inline-flex items-center px-6 py-2 bg-primary-600 text-white font-semibold rounded-lg hover:bg-primary-700 transition-colors">
+                  <a
+                    href={event.website || '#contacto'}
+                    target={event.website ? '_blank' : undefined}
+                    rel={event.website ? 'noopener noreferrer' : undefined}
+                    className="inline-flex items-center px-6 py-2 bg-primary-600 text-white font-semibold rounded-lg hover:bg-primary-700 transition-colors"
+                  >
                     Más información
                     <ArrowRight className="ml-2 w-4 h-4" />
-                  </button>
-                  <button className="inline-flex items-center px-6 py-2 border-2 border-primary-600 text-primary-600 font-semibold rounded-lg hover:bg-primary-50 transition-colors">
+                  </a>
+                  <a
+                    href="#contacto"
+                    className="inline-flex items-center px-6 py-2 border-2 border-primary-600 text-primary-600 font-semibold rounded-lg hover:bg-primary-50 transition-colors"
+                  >
                     Inscribirse
-                  </button>
+                  </a>
                 </div>
               </div>
             </div>

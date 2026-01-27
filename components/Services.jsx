@@ -18,9 +18,9 @@ export default function Services() {
       title: 'Eventos y Congresos',
       description: 'Organizamos eventos científicos, congresos nacionales e internacionales con los referentes más destacados de la medicina de emergencias.',
       features: [
-        'Congresos anuales',
-        'Jornadas científicas',
-        'Workshops prácticos',
+        'Congresos nacionales e internacionales',
+        'Jornadas de capacitación',
+        'Competencias académicas',
         'Networking profesional',
       ],
     },
@@ -39,12 +39,6 @@ export default function Services() {
       icon: ShieldCheck,
       title: 'Certificaciones',
       description: 'Programas de certificación profesional en diferentes áreas de la medicina prehospitalaria con validez nacional.',
-      features: [
-        'Certificación oficial',
-        'Reconocimiento nacional',
-        'Recertificaciones',
-        'Actualización continua',
-      ],
     },
   ]
 
@@ -77,28 +71,30 @@ export default function Services() {
                   </h3>
                 </div>
 
-                <p className="text-gray-600 mb-6 leading-relaxed">
+                <p className="text-gray-600 leading-relaxed">
                   {service.description}
                 </p>
 
-                <ul className="space-y-2">
-                  {service.features.map((feature, idx) => (
-                    <li key={idx} className="flex items-center text-gray-700">
-                      <svg
-                        className="w-5 h-5 text-primary-600 mr-3 flex-shrink-0"
-                        fill="currentColor"
-                        viewBox="0 0 20 20"
-                      >
-                        <path
-                          fillRule="evenodd"
-                          d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                          clipRule="evenodd"
-                        />
-                      </svg>
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
+                {service.features && service.features.length > 0 && (
+                  <ul className="space-y-2 mt-6">
+                    {service.features.map((feature, idx) => (
+                      <li key={idx} className="flex items-center text-gray-700">
+                        <svg
+                          className="w-5 h-5 text-primary-600 mr-3 flex-shrink-0"
+                          fill="currentColor"
+                          viewBox="0 0 20 20"
+                        >
+                          <path
+                            fillRule="evenodd"
+                            d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                            clipRule="evenodd"
+                          />
+                        </svg>
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+                )}
               </div>
             )
           })}

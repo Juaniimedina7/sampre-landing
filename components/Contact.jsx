@@ -18,20 +18,53 @@ export default function Contact() {
     })
   }
 
-  const handleSubmit = (e) => {
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState(null)
+
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    // Aquí se implementaría la lógica de envío del formulario
-    console.log('Form submitted:', formData)
-    alert('Gracias por contactarnos. Te responderemos a la brevedad.')
-    setFormData({ name: '', email: '', subject: '', message: '' })
+    setIsSubmitting(true)
+    setSubmitStatus(null)
+
+    try {
+      // Usando FormSubmit para enviar emails sin backend
+      const response = await fetch('https://formsubmit.co/sampreweb@gmail.com', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          subject: formData.subject,
+          message: formData.message,
+          _subject: `Contacto SAMPRE: ${formData.subject}`,
+          _captcha: 'false',
+          _template: 'table'
+        })
+      })
+
+      if (response.ok) {
+        setSubmitStatus('success')
+        setFormData({ name: '', email: '', subject: '', message: '' })
+      } else {
+        setSubmitStatus('error')
+      }
+    } catch (error) {
+      console.error('Error al enviar formulario:', error)
+      setSubmitStatus('error')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   const contactInfo = [
     {
       icon: Mail,
       title: 'Email',
-      content: 'info@sampre.org.ar',
-      link: 'mailto:info@sampre.org.ar',
+      content: 'sampreweb@gmail.com',
+      link: 'mailto:sampreweb@gmail.com',
     },
     {
       icon: Phone,
@@ -132,11 +165,26 @@ export default function Contact() {
 
               <button
                 type="submit"
-                className="w-full inline-flex items-center justify-center px-6 py-3 bg-primary-600 text-white font-medium rounded-lg hover:bg-primary-700 transition-colors shadow-lg hover:shadow-xl"
+                disabled={isSubmitting}
+                className="w-full inline-flex items-center justify-center px-6 py-3 bg-primary-600 text-white font-medium rounded-lg hover:bg-primary-700 transition-colors shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                Enviar mensaje
+                {isSubmitting ? 'Enviando...' : 'Enviar mensaje'}
                 <Send className="ml-2 w-5 h-5" />
               </button>
+
+              {submitStatus === 'success' && (
+                <div className="mt-4 p-4 bg-green-50 border border-green-200 text-green-800 rounded-lg">
+                  <p className="font-semibold">¡Mensaje enviado con éxito!</p>
+                  <p className="text-sm">Te responderemos a la brevedad.</p>
+                </div>
+              )}
+
+              {submitStatus === 'error' && (
+                <div className="mt-4 p-4 bg-red-50 border border-red-200 text-red-800 rounded-lg">
+                  <p className="font-semibold">Error al enviar el mensaje</p>
+                  <p className="text-sm">Por favor intenta nuevamente o contáctanos directamente por email.</p>
+                </div>
+              )}
             </form>
           </div>
 
@@ -170,11 +218,6 @@ export default function Contact() {
               })}
             </div>
 
-            <div className="bg-primary-50 rounded-xl p-6">
-              <h4 className="font-bold text-gray-900 mb-3">Horarios de atención</h4>
-              <p className="text-gray-700 mb-2">Lunes a Viernes: 9:00 - 18:00</p>
-              <p className="text-gray-700">Sábados: 9:00 - 13:00</p>
-            </div>
           </div>
         </div>
       </div>

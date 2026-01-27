@@ -70,9 +70,9 @@ export default function Hero() {
           </h2>
 
           {/* Description */}
-          <p className="text-lg md:text-xl text-white/95 mb-10 max-w-2xl mx-auto drop-shadow-md">
-            Promoviendo la excelencia en atención médica de emergencias prehospitalarias a través de
-            capacitación continua, investigación y desarrollo profesional en toda Argentina.
+          <p className="text-lg md:text-xl text-white/95 mb-20 max-w-2xl mx-auto drop-shadow-md">
+            Asociación Civil sin fines de lucro dedicada al desarrollo, perfeccionamiento y difusión de la
+            Medicina de Urgencias y Emergencias prehospitalarias en todo el país.
           </p>
 
           {/* CTA Buttons */}
@@ -90,22 +90,6 @@ export default function Hero() {
             >
               Contacto
             </a>
-          </div>
-
-          {/* Stats */}
-          <div className="grid grid-cols-3 gap-8 mt-16 max-w-2xl mx-auto">
-            <div className="bg-white/10 backdrop-blur-md rounded-xl p-4 border border-white/20">
-              <div className="text-3xl md:text-4xl font-bold text-white">1000+</div>
-              <div className="text-sm md:text-base text-white/90 mt-1">Profesionales capacitados</div>
-            </div>
-            <div className="bg-white/10 backdrop-blur-md rounded-xl p-4 border border-white/20">
-              <div className="text-3xl md:text-4xl font-bold text-white">50+</div>
-              <div className="text-sm md:text-base text-white/90 mt-1">Eventos anuales</div>
-            </div>
-            <div className="bg-white/10 backdrop-blur-md rounded-xl p-4 border border-white/20">
-              <div className="text-3xl md:text-4xl font-bold text-white">20+</div>
-              <div className="text-sm md:text-base text-white/90 mt-1">Años de experiencia</div>
-            </div>
           </div>
         </div>
       </div>

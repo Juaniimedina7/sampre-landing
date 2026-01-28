@@ -88,7 +88,7 @@ export default function Hero() {
               href="#contacto"
               className="inline-flex items-center justify-center px-8 py-4 bg-white/95 backdrop-blur-sm text-primary-600 font-semibold rounded-lg hover:bg-white transition-all shadow-xl hover:shadow-2xl hover:scale-105"
             >
-              Contacto
+              Asociate
             </a>
           </div>
         </div>

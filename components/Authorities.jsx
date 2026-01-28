@@ -31,7 +31,7 @@ export default function Authorities() {
     {
       name: 'Ivana Nogueira',
       position: 'Secretaria Académica',
-      specialty: 'Salud Mental en Emergencias',
+      specialty: 'Lic. en Psicología - Especialista Jerarquizada en Salud Comunitaria, Emergencias y Desastres - Coordinadora PROSAMIC - Jefa de Programa de formación y vinculación en Emergencias Sanitarias de Moreno.',
       image: getImageUrl(authorityImages.tesorera),
     },
     {
@@ -51,7 +51,7 @@ export default function Authorities() {
   const currentVocales = [
     { name: 'Alejandra Schro', position: 'Vocal 1', specialty: 'Medicina Prehospitalaria', image: getImageUrl(vocalImages.alejandraSchro) },
     { name: 'Claudia Congett', position: 'Vocal 2', specialty: 'Emergencias Médicas', image: getImageUrl(vocalImages.placeholder) },
-    { name: 'Juan Peresson', position: 'Vocal 3', specialty: 'Atención Prehospitalaria', image: getImageUrl(vocalImages.placeholder) },
+    { name: 'Juan Manuel Peresson', position: 'Vocal 3', specialty: 'Atención Prehospitalaria', image: getImageUrl(vocalImages.placeholder) },
     { name: 'Nelson Mir', position: 'Vocal 4', specialty: 'Tec. Sup. en Emergencias Médicas - Director de Emergencias de la provincia de Santiago del Estero', image: getImageUrl(vocalImages.nelsonMir) },
     { name: 'Luciana Espindola', position: 'Vocal Suplente', specialty: 'Medicina de Emergencias', image: getImageUrl(vocalImages.lucianaEspindola) },
     { name: 'Rodrigo Garcia Marte', position: 'Vocal Suplente', specialty: 'Técnico en Emergencias Extrahospitalarias - Jefe del Depto. Técnico Operativo de Emergencias - Tierra del Fuego', image: getImageUrl(vocalImages.rodrigoGarciaMarte) },

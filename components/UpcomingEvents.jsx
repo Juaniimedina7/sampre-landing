@@ -9,7 +9,7 @@ export default function UpcomingEvents() {
       location: 'Universidad Nacional Arturo Jauretche (UNAJ)',
       time: '09:00 - 18:00 hs',
       attendees: '8-16 equipos',
-      description: 'Competencia académica organizada por SAMPRE con escenarios simulados de emergencias prehospitalarias. Los equipos compiten en el manejo de situaciones de emergencia realistas. Inscripción: $100.000 ARS (equipos nacionales) / USD 100 (equipos internacionales).',
+      description: 'Competencia académica organizada por SAMPRE con escenarios simulados de emergencias prehospitalarias. Los equipos compiten en el manejo de situaciones de emergencia realistas.',
       category: 'Competencia Académica',
       featured: true,
       image: getImageUrl(eventImages.rallyPrehospitalario2026),

@@ -62,7 +62,7 @@ export default function Recognitions() {
       id: 7,
       name: 'TSEM. Luciano Gandini',
       title: 'Socio Fundador y Primer Presidente SAMPRE',
-      description: 'Técnico Superior en Emergencias Médicas. Coordinador Académico PAR Paramédico Argentino. Instructor NAEMT.',
+      description: 'Técnico Superior en Emergencias Médicas. Coordinador Académico PAR Paramédico Argentino. Facultado NAEMT PHTLS AMLS ',
       image: '/images/mentions/luciano-gandini.jpg',
       specialty: 'Emergencias Médicas',
     },

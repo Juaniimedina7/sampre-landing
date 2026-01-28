@@ -38,7 +38,7 @@ export default function Services() {
     {
       icon: ShieldCheck,
       title: 'Certificaciones',
-      description: 'Programas de certificación profesional en diferentes áreas de la medicina prehospitalaria con validez nacional.',
+      description: 'Programas de certificación de servicios y de profesionales en diferentes áreas de la medicina prehospitalaria con validez nacional.',
     },
   ]
 

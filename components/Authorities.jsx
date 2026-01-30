@@ -57,7 +57,7 @@ export default function Authorities() {
     {
       name: 'Cristian Bottari',
       position: 'Prosecretario Académico',
-      specialty: 'Capacitación',
+      specialty: 'Médico especialista en Infectología, emergencias y desastres – Médico Aero-evacuador – Miembro fundador SAMPRE – Director General del SIES Rosario – Director Médico UTV Aero-emergencias – Jefe de Cátedra de Emergencias UAI – Instructor Internacional PHTLS (NAEMT)',
       image: getImageUrl(authorityImages.vocal2),
     },
   ]

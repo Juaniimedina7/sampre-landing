@@ -57,7 +57,7 @@ export default function Authorities() {
     {
       name: 'Cristian Bottari',
       position: 'Prosecretario Académico',
-      specialty: 'Médico especialista en Infectología, emergencias y desastres – Médico Aero-evacuador – Miembro fundador SAMPRE – Director General del SIES Rosario – Director Médico UTV Aero-emergencias – Jefe de Cátedra de Emergencias UAI – Instructor Internacional PHTLS (NAEMT)',
+      specialty: 'Médico especialista en Infectología, emergencias y desastres – Aero-evacuador – Miembro fundador SAMPRE – Director General del SIES Rosario – Director Médico UTV Aero-emergencias – Jefe de Cátedra de Emergencias UAI – Instructor Internacional PHTLS (NAEMT)',
       image: getImageUrl(authorityImages.vocal2),
     },
   ]
@@ -150,9 +150,9 @@ export default function Authorities() {
   ]
 
   const fiscalizacion2123 = [
-    { name: 'Silvio Aguilera' },
-    { name: 'Claudio Knaup' },
-    { name: 'Gabriel Sosa' },
+    { name: 'Miguel Pedraza' },
+    { name: 'Mariano Lamas' },
+    { name: 'William Medina' },
   ]
 
   const fiscalizacion1921 = [

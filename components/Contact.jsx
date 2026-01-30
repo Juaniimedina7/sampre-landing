@@ -2,8 +2,10 @@
 
 import { useState } from 'react'
 import { Mail, Phone, MapPin, Send } from 'lucide-react'
+import { useInView } from '@/hooks/useInView'
 
 export default function Contact() {
+  const [titleRef, titleInView] = useInView()
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -84,7 +86,7 @@ export default function Contact() {
     <section id="contacto" className="py-16 md:py-24 bg-white">
       <div className="container mx-auto px-4">
         <div className="max-w-3xl mx-auto text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          <h2 ref={titleRef} className={`section-title ${titleInView ? 'in-view' : ''} text-3xl md:text-4xl font-bold text-gray-900 mb-4`}>
             Contacto
           </h2>
           <p className="text-lg text-gray-600">

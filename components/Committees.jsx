@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { useInView } from '@/hooks/useInView'
 import {
   Radio,
   Heart,
@@ -29,6 +30,7 @@ import {
 } from 'lucide-react'
 
 export default function Committees() {
+  const [titleRef, titleInView] = useInView()
   const [showMobileCommittees, setShowMobileCommittees] = useState(false)
 
   const committees = [
@@ -41,7 +43,7 @@ export default function Committees() {
     { id: 7, name: 'Mejores Prácticas', leader: 'Ricardo Quintero', icon: FileCheck },
     { id: 8, name: 'Gestión', leader: 'Daniel Maffei', icon: Settings },
     { id: 9, name: 'Seguridad del Paciente', leader: 'Marcelo Pechieu', icon: Shield },
-    { id: 10, name: 'Medicina Táctica', leader: 'Sebastián Scheller', icon: Target },
+    { id: 10, name: 'Medicina Táctica', leader: 'Diego Álvarez', icon: Target },
     { id: 11, name: 'Reanimación', leader: 'Diego Pizzini', icon: Activity },
     { id: 12, name: 'Tecnología en Emergencias', leader: 'Gustavo Daquarti', icon: Smartphone },
     { id: 13, name: 'Salud Mental', leader: 'Ivana Nogueira', icon: Brain },
@@ -65,7 +67,7 @@ export default function Committees() {
             <Settings className="w-4 h-4" />
             <span className="text-sm font-medium">Período 2026-2028</span>
           </div>
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          <h2 ref={titleRef} className={`section-title ${titleInView ? 'in-view' : ''} text-3xl md:text-4xl font-bold text-gray-900 mb-4`}>
             Comités de SAMPRE
           </h2>
           <p className="text-lg text-gray-600">

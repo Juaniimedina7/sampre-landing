@@ -2,8 +2,10 @@
 
 import { useState, useEffect } from 'react'
 import { Award, ChevronLeft, ChevronRight } from 'lucide-react'
+import { useInView } from '@/hooks/useInView'
 
 export default function Recognitions() {
+  const [titleRef, titleInView] = useInView()
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isPaused, setIsPaused] = useState(false)
   const [lastInteraction, setLastInteraction] = useState(Date.now())
@@ -111,7 +113,7 @@ export default function Recognitions() {
             <Award className="w-4 h-4" />
             <span className="text-sm font-medium">Reconocimientos 2025</span>
           </div>
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          <h2 ref={titleRef} className={`section-title ${titleInView ? 'in-view' : ''} text-3xl md:text-4xl font-bold text-gray-900 mb-4`}>
             Destacados de la Medicina Prehospitalaria
           </h2>
           <p className="text-lg text-gray-600">

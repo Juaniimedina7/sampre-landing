@@ -1,7 +1,11 @@
+'use client'
+
 import { Calendar, MapPin, Clock, Users, ArrowRight } from 'lucide-react'
 import { eventImages, getImageUrl } from '@/lib/images'
+import { useInView } from '@/hooks/useInView'
 
 export default function UpcomingEvents() {
+  const [titleRef, titleInView] = useInView()
   const events = [
     {
       title: 'Rally Prehospitalario SAMPRE 2026',
@@ -49,7 +53,7 @@ export default function UpcomingEvents() {
             <Calendar className="w-4 h-4" />
             <span className="text-sm font-medium">Agenda 2026</span>
           </div>
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          <h2 ref={titleRef} className={`section-title ${titleInView ? 'in-view' : ''} text-3xl md:text-4xl font-bold text-gray-900 mb-4`}>
             Próximos Eventos
           </h2>
           <p className="text-lg text-gray-600">

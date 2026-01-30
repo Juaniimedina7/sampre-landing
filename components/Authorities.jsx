@@ -3,11 +3,25 @@
 import { useState } from 'react'
 import { Users, ChevronDown, ChevronUp } from 'lucide-react'
 import { authorityImages, vocalImages, getImageUrl } from '@/lib/images'
+import { useInView } from '@/hooks/useInView'
 
 export default function Authorities() {
   const [showPrevious, setShowPrevious] = useState(false)
+  const [show2123, setShow2123] = useState(false)
+  const [show1921, setShow1921] = useState(false)
   const [showMobileCurrent, setShowMobileCurrent] = useState(false)
   const [showVocales, setShowVocales] = useState(false)
+  const [expandedAuthority, setExpandedAuthority] = useState(null)
+  const [expandedVocal, setExpandedVocal] = useState(null)
+  const [titleRef, titleInView] = useInView()
+
+  const handleAuthorityClick = (index) => {
+    setExpandedAuthority(expandedAuthority === index ? null : index)
+  }
+
+  const handleVocalClick = (index) => {
+    setExpandedVocal(expandedVocal === index ? null : index)
+  }
 
   const currentAuthorities = [
     {
@@ -50,7 +64,7 @@ export default function Authorities() {
 
   const currentVocales = [
     { name: 'Alejandra Schro', position: 'Vocal 1', specialty: 'Medicina Prehospitalaria', image: getImageUrl(vocalImages.alejandraSchro) },
-    { name: 'Claudia Congett', position: 'Vocal 2', specialty: 'Emergencias Médicas', image: getImageUrl(vocalImages.placeholder) },
+    { name: 'Leonardo Manino', position: 'Vocal 2', specialty: 'Medicina Prehospitalaria', image: getImageUrl(vocalImages.placeholder) },
     { name: 'Juan Manuel Peresson', position: 'Vocal 3', specialty: 'Atención Prehospitalaria', image: getImageUrl(vocalImages.placeholder) },
     { name: 'Nelson Mir', position: 'Vocal 4', specialty: 'Tec. Sup. en Emergencias Médicas - Director de Emergencias de la provincia de Santiago del Estero', image: getImageUrl(vocalImages.nelsonMir) },
     { name: 'Luciana Espindola', position: 'Vocal Suplente', specialty: 'Medicina de Emergencias', image: getImageUrl(vocalImages.lucianaEspindola) },
@@ -63,36 +77,114 @@ export default function Authorities() {
     { name: 'Luciano Gandini' },
   ]
 
+  const authorities2123 = [
+    {
+      name: 'Silvio Luis Aguilera',
+      position: 'Presidente',
+    },
+    {
+      name: 'Claudio Knaup',
+      position: 'Vicepresidente',
+    },
+    {
+      name: 'Gabriel Sosa',
+      position: 'Secretario Científico',
+    },
+    {
+      name: 'Claudio Velazco',
+      position: 'Secretario Administrativo',
+    },
+    {
+      name: 'Adrián Schneider',
+      position: 'Pro Secretario Científico',
+    },
+    {
+      name: 'Aníbal Feder',
+      position: 'Pro Secretario Administrativo',
+    },
+  ]
+
+  const vocales2123 = [
+    { name: 'Leandro Herbón', position: 'Vocal Titular' },
+    { name: 'Mariano Alfonsi', position: 'Vocal Titular' },
+    { name: 'Juan Barbero', position: 'Vocal Titular' },
+    { name: 'José Nicolás Gómez', position: 'Vocal Titular' },
+    { name: 'Alejandro Yamandu', position: 'Vocal Suplente' },
+    { name: 'Paola Caro', position: 'Vocal Suplente' },
+  ]
+
+  const authorities1921 = [
+    {
+      name: 'Luciano Gandini',
+      position: 'Presidente',
+    },
+    {
+      name: 'Silvio Aguilera',
+      position: 'Vicepresidente',
+    },
+    {
+      name: 'Flavio Rodriguez',
+      position: 'Secretario Científico',
+    },
+    {
+      name: 'Manuel Molina Pico',
+      position: 'Secretario Administrativo',
+    },
+    {
+      name: 'Gabriel Sosa',
+      position: 'Pro Secretario Científico',
+    },
+    {
+      name: 'Claudio Velazco',
+      position: 'Pro Secretario Administrativo',
+    },
+  ]
+
+  const vocales1921 = [
+    { name: 'Miguel Pedraza', position: 'Vocal Titular' },
+    { name: 'Diego Pizzini', position: 'Vocal Titular' },
+    { name: 'Leandro Herbón', position: 'Vocal Titular' },
+    { name: 'Mariano Alfonsi', position: 'Vocal Titular' },
+    { name: 'Arnaldo Saavedra', position: 'Vocal Suplente' },
+    { name: 'Eduardo Isern', position: 'Vocal Suplente' },
+  ]
+
+  const fiscalizacion2123 = [
+    { name: 'Silvio Aguilera' },
+    { name: 'Claudio Knaup' },
+    { name: 'Gabriel Sosa' },
+  ]
+
+  const fiscalizacion1921 = [
+    { name: 'Aníbal Feder' },
+    { name: 'Federico Etchenique' },
+    { name: 'Valeria El Haj' },
+  ]
+
   const previousAuthorities = [
     {
       name: 'Claudio Knaup',
       position: 'Presidente',
-      specialty: 'Medicina Prehospitalaria',
     },
     {
       name: 'William Medina',
       position: 'Vicepresidente',
-      specialty: 'Cirujano - Emergentólogo',
     },
     {
       name: 'Aníbal Feder',
       position: 'Secretario Administrativo',
-      specialty: 'Gestión',
     },
     {
       name: 'Adrián Schneider',
       position: 'Secretario Académico',
-      specialty: 'Capacitación',
     },
     {
       name: 'Lucas Henkel',
       position: 'Prosecretario Administrativo',
-      specialty: 'Administración',
     },
     {
       name: 'Ivana Nogueira',
       position: 'Prosecretaria Académica',
-      specialty: 'Salud Mental',
     },
   ]
 
@@ -119,7 +211,7 @@ export default function Authorities() {
             <Users className="w-4 h-4" />
             <span className="text-sm font-medium">Comisión Directiva</span>
           </div>
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          <h2 ref={titleRef} className={`section-title ${titleInView ? 'in-view' : ''} text-3xl md:text-4xl font-bold text-gray-900 mb-4`}>
             Autoridades
           </h2>
           <p className="text-lg text-gray-600">
@@ -159,7 +251,8 @@ export default function Authorities() {
             {currentAuthorities.map((authority, index) => (
               <div
                 key={index}
-                className="group relative rounded-xl overflow-hidden shadow-md hover:shadow-2xl transition-all border border-gray-100"
+                onClick={() => handleAuthorityClick(index)}
+                className={`group relative rounded-xl overflow-hidden shadow-md hover:shadow-2xl transition-all border border-gray-100 cursor-pointer ${expandedAuthority === index ? 'authority-expanded' : ''}`}
               >
                 {/* Imagen de fondo */}
                 <div className="aspect-[3/4] bg-gray-200 overflow-hidden">
@@ -170,8 +263,8 @@ export default function Authorities() {
                   />
                 </div>
 
-                {/* Overlay con info - se expande al hacer hover */}
-                <div className="absolute inset-x-0 bottom-0 h-24 group-hover:h-48 bg-primary-900/90 backdrop-blur-sm transition-all duration-300 ease-in-out">
+                {/* Overlay con info - se expande al hacer hover o click */}
+                <div className={`absolute inset-x-0 bottom-0 bg-primary-900/90 backdrop-blur-sm transition-all duration-300 ease-in-out ${expandedAuthority === index ? 'h-48' : 'h-24'} md:h-24 md:group-hover:h-48`}>
                   <div className="absolute inset-0 p-4 flex flex-col justify-end text-white">
                     {/* Nombre y cargo - siempre visible */}
                     <h3 className="text-lg font-bold mb-0.5 drop-shadow-lg">
@@ -181,8 +274,8 @@ export default function Authorities() {
                       {authority.position}
                     </div>
 
-                    {/* Descripción - visible solo en hover */}
-                    <p className="text-xs text-gray-100 leading-relaxed max-h-0 group-hover:max-h-32 overflow-hidden transition-all duration-300 delay-75">
+                    {/* Descripción - visible solo en hover o expanded */}
+                    <p className={`text-xs text-gray-100 leading-relaxed overflow-hidden transition-all duration-300 delay-75 ${expandedAuthority === index ? 'max-h-32' : 'max-h-0'} md:max-h-0 md:group-hover:max-h-32`}>
                       {authority.specialty}
                     </p>
                   </div>
@@ -215,7 +308,8 @@ export default function Authorities() {
                 {currentVocales.map((vocal, index) => (
                   <div
                     key={index}
-                    className="group relative rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all border border-gray-100"
+                    onClick={() => handleVocalClick(index)}
+                    className={`group relative rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all border border-gray-100 cursor-pointer ${expandedVocal === index ? 'vocal-expanded' : ''}`}
                   >
                     {/* Imagen de fondo */}
                     <div className="aspect-[3/4] bg-gray-200 overflow-hidden">
@@ -226,8 +320,8 @@ export default function Authorities() {
                       />
                     </div>
 
-                    {/* Overlay con info - se expande al hacer hover */}
-                    <div className="absolute inset-x-0 bottom-0 h-24 group-hover:h-40 bg-primary-900/90 backdrop-blur-sm transition-all duration-300 ease-in-out">
+                    {/* Overlay con info - se expande al hacer hover o click */}
+                    <div className={`absolute inset-x-0 bottom-0 bg-primary-900/90 backdrop-blur-sm transition-all duration-300 ease-in-out ${expandedVocal === index ? 'h-40' : 'h-24'} md:h-24 md:group-hover:h-40`}>
                       <div className="absolute inset-0 p-4 flex flex-col justify-end text-white">
                         {/* Nombre y cargo - siempre visible */}
                         <h4 className="text-base font-bold mb-0.5 drop-shadow-lg">
@@ -237,8 +331,8 @@ export default function Authorities() {
                           {vocal.position}
                         </div>
 
-                        {/* Descripción - visible solo en hover */}
-                        <p className="text-xs text-gray-100 leading-relaxed max-h-0 group-hover:max-h-24 overflow-hidden transition-all duration-300 delay-75">
+                        {/* Descripción - visible solo en hover o expanded */}
+                        <p className={`text-xs text-gray-100 leading-relaxed overflow-hidden transition-all duration-300 delay-75 ${expandedVocal === index ? 'max-h-24' : 'max-h-0'} md:max-h-0 md:group-hover:max-h-24`}>
                           {vocal.specialty}
                         </p>
                       </div>
@@ -301,7 +395,6 @@ export default function Authorities() {
                     <div>
                       <h4 className="font-bold text-gray-900">{authority.name}</h4>
                       <p className="text-secondary-600 font-semibold text-sm">{authority.position}</p>
-                      <p className="text-gray-600 text-xs">{authority.specialty}</p>
                     </div>
                   </div>
                 ))}
@@ -330,6 +423,154 @@ export default function Authorities() {
                 <h4 className="text-lg font-bold text-gray-900 mb-4">Órgano de Fiscalización 2024-2026</h4>
                 <div className="flex flex-wrap gap-4">
                   {fiscalizacion2024.map((member, index) => (
+                    <div key={index} className="flex items-center space-x-2 bg-white px-4 py-2 rounded-lg shadow-sm">
+                      <div className="w-8 h-8 bg-primary-600 rounded-full flex items-center justify-center text-white text-sm font-bold">
+                        {member.name.charAt(0)}
+                      </div>
+                      <span className="font-semibold text-gray-900 text-sm">{member.name}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Toggle button for 2021-2023 board */}
+        <div className="max-w-6xl mx-auto mb-8">
+          <button
+            onClick={() => setShow2123(!show2123)}
+            className="w-full bg-gradient-to-r from-gray-100 to-gray-200 hover:from-gray-200 hover:to-gray-300 px-6 py-4 rounded-xl transition-all flex items-center justify-between group shadow-md"
+          >
+            <span className="text-lg font-bold text-gray-700">
+              Comisión Directiva Período 2021-2023
+            </span>
+            {show2123 ? (
+              <ChevronUp className="w-6 h-6 text-gray-700 group-hover:text-primary-600 transition-colors" />
+            ) : (
+              <ChevronDown className="w-6 h-6 text-gray-700 group-hover:text-primary-600 transition-colors" />
+            )}
+          </button>
+        </div>
+
+        {/* Board 2021-2023 */}
+        {show2123 && (
+          <div className="max-w-6xl mx-auto mb-8">
+            <div className="bg-white rounded-xl shadow-lg p-8 border border-gray-200">
+              <div className="grid md:grid-cols-2 gap-6 mb-8">
+                {authorities2123.map((authority, index) => (
+                  <div
+                    key={index}
+                    className="flex items-center space-x-4 p-4 bg-gradient-to-br from-gray-50 to-white rounded-lg border border-gray-200"
+                  >
+                    <div className="w-16 h-16 bg-secondary-600 rounded-full flex items-center justify-center text-white text-2xl font-bold flex-shrink-0">
+                      {authority.name.charAt(0)}
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-gray-900">{authority.name}</h4>
+                      <p className="text-secondary-600 font-semibold text-sm">{authority.position}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Vocales 2021-2023 */}
+              <div className="mb-8">
+                <h4 className="text-lg font-bold text-gray-900 mb-4">Vocales</h4>
+                <div className="grid md:grid-cols-3 gap-4">
+                  {vocales2123.map((vocal, index) => (
+                    <div key={index} className="flex items-center space-x-3 p-3 bg-gray-50 rounded-lg">
+                      <div className="w-10 h-10 bg-secondary-600 rounded-full flex items-center justify-center text-white font-bold">
+                        {vocal.name.charAt(0)}
+                      </div>
+                      <div>
+                        <p className="font-semibold text-gray-900 text-sm">{vocal.name}</p>
+                        <p className="text-xs text-gray-600">{vocal.position}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Órgano de fiscalización 2021-2023 */}
+              <div className="bg-gradient-to-br from-secondary-50 to-primary-50 rounded-lg p-6">
+                <h4 className="text-lg font-bold text-gray-900 mb-4">Órgano de Fiscalización 2021-2023</h4>
+                <div className="flex flex-wrap gap-4">
+                  {fiscalizacion2123.map((member, index) => (
+                    <div key={index} className="flex items-center space-x-2 bg-white px-4 py-2 rounded-lg shadow-sm">
+                      <div className="w-8 h-8 bg-primary-600 rounded-full flex items-center justify-center text-white text-sm font-bold">
+                        {member.name.charAt(0)}
+                      </div>
+                      <span className="font-semibold text-gray-900 text-sm">{member.name}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Toggle button for 2019-2021 board */}
+        <div className="max-w-6xl mx-auto mb-8">
+          <button
+            onClick={() => setShow1921(!show1921)}
+            className="w-full bg-gradient-to-r from-gray-100 to-gray-200 hover:from-gray-200 hover:to-gray-300 px-6 py-4 rounded-xl transition-all flex items-center justify-between group shadow-md"
+          >
+            <span className="text-lg font-bold text-gray-700">
+              Comisión Directiva Período 2019-2021
+            </span>
+            {show1921 ? (
+              <ChevronUp className="w-6 h-6 text-gray-700 group-hover:text-primary-600 transition-colors" />
+            ) : (
+              <ChevronDown className="w-6 h-6 text-gray-700 group-hover:text-primary-600 transition-colors" />
+            )}
+          </button>
+        </div>
+
+        {/* Board 2019-2021 */}
+        {show1921 && (
+          <div className="max-w-6xl mx-auto mb-8">
+            <div className="bg-white rounded-xl shadow-lg p-8 border border-gray-200">
+              <div className="grid md:grid-cols-2 gap-6 mb-8">
+                {authorities1921.map((authority, index) => (
+                  <div
+                    key={index}
+                    className="flex items-center space-x-4 p-4 bg-gradient-to-br from-gray-50 to-white rounded-lg border border-gray-200"
+                  >
+                    <div className="w-16 h-16 bg-secondary-600 rounded-full flex items-center justify-center text-white text-2xl font-bold flex-shrink-0">
+                      {authority.name.charAt(0)}
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-gray-900">{authority.name}</h4>
+                      <p className="text-secondary-600 font-semibold text-sm">{authority.position}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Vocales 2019-2021 */}
+              <div className="mb-8">
+                <h4 className="text-lg font-bold text-gray-900 mb-4">Vocales</h4>
+                <div className="grid md:grid-cols-3 gap-4">
+                  {vocales1921.map((vocal, index) => (
+                    <div key={index} className="flex items-center space-x-3 p-3 bg-gray-50 rounded-lg">
+                      <div className="w-10 h-10 bg-secondary-600 rounded-full flex items-center justify-center text-white font-bold">
+                        {vocal.name.charAt(0)}
+                      </div>
+                      <div>
+                        <p className="font-semibold text-gray-900 text-sm">{vocal.name}</p>
+                        <p className="text-xs text-gray-600">{vocal.position}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Órgano de fiscalización 2019-2021 */}
+              <div className="bg-gradient-to-br from-secondary-50 to-primary-50 rounded-lg p-6">
+                <h4 className="text-lg font-bold text-gray-900 mb-4">Órgano de Fiscalización 2019-2021</h4>
+                <div className="flex flex-wrap gap-4">
+                  {fiscalizacion1921.map((member, index) => (
                     <div key={index} className="flex items-center space-x-2 bg-white px-4 py-2 rounded-lg shadow-sm">
                       <div className="w-8 h-8 bg-primary-600 rounded-full flex items-center justify-center text-white text-sm font-bold">
                         {member.name.charAt(0)}

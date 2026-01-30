@@ -1,3 +1,5 @@
+'use client'
+
 import {
   Target,
   BookOpen,
@@ -10,8 +12,10 @@ import {
   Scale,
   Heart
 } from 'lucide-react'
+import { useInView } from '@/hooks/useInView'
 
 export default function About() {
+  const [titleRef, titleInView] = useInView()
   const objectives = [
     {
       icon: GraduationCap,
@@ -69,7 +73,7 @@ export default function About() {
     <section id="sobre-nosotros" className="py-16 md:py-24 bg-white">
       <div className="container mx-auto px-4">
         <div className="max-w-3xl mx-auto text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          <h2 ref={titleRef} className={`section-title ${titleInView ? 'in-view' : ''} text-3xl md:text-4xl font-bold text-gray-900 mb-4`}>
             Sobre SAMPRE
           </h2>
           <p className="text-lg text-gray-600">

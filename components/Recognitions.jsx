@@ -24,7 +24,7 @@ export default function Recognitions() {
       name: 'Dra. Andrea Potes',
       title: 'Jefe Servicio de Guardia',
       description: 'Especialista en Cirugía General. Jefe del Servicio de Guardia del Hospital Interzonal HIGA Dr. Oscar Alende Mar del Plata.',
-      image: 'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=400&q=80',
+      image: null,
       specialty: 'Cirugía General',
     },
     {
@@ -153,12 +153,20 @@ export default function Recognitions() {
                 >
                   {/* Image */}
                   <div className="h-64 overflow-hidden relative">
-                    <img
-                      src={person.image}
-                      alt={`Fotografía de ${person.name}, ${person.title}`}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                    {person.image ? (
+                      <>
+                        <img
+                          src={person.image}
+                          alt={`Fotografía de ${person.name}, ${person.title}`}
+                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                      </>
+                    ) : (
+                      <div className="w-full h-full bg-gradient-to-br from-gray-300 to-gray-400 flex items-center justify-center">
+                        <Award className="w-24 h-24 text-gray-500 opacity-30" />
+                      </div>
+                    )}
                     <div className="absolute bottom-4 left-4 right-4">
                       <span className="inline-block px-3 py-1 bg-primary-600 text-white text-xs font-semibold rounded-full">
                         {person.specialty}
@@ -187,12 +195,20 @@ export default function Recognitions() {
               <div className="bg-white rounded-xl shadow-md border-t-4 border-primary-600 overflow-hidden">
                 {/* Image */}
                 <div className="h-64 overflow-hidden relative">
-                  <img
-                    src={recognitions[currentIndex].image}
-                    alt={`Fotografía de ${recognitions[currentIndex].name}, ${recognitions[currentIndex].title}`}
-                    className="w-full h-full object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                  {recognitions[currentIndex].image ? (
+                    <>
+                      <img
+                        src={recognitions[currentIndex].image}
+                        alt={`Fotografía de ${recognitions[currentIndex].name}, ${recognitions[currentIndex].title}`}
+                        className="w-full h-full object-cover"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                    </>
+                  ) : (
+                    <div className="w-full h-full bg-gradient-to-br from-gray-300 to-gray-400 flex items-center justify-center">
+                      <Award className="w-24 h-24 text-gray-500 opacity-30" />
+                    </div>
+                  )}
                   <div className="absolute bottom-4 left-4 right-4">
                     <span className="inline-block px-3 py-1 bg-primary-600 text-white text-xs font-semibold rounded-full">
                       {recognitions[currentIndex].specialty}

@@ -65,7 +65,7 @@ export default function Authorities() {
   const currentVocales = [
     { name: 'Alejandra Schro', position: 'Vocal 1', specialty: 'Medicina Prehospitalaria', image: getImageUrl(vocalImages.alejandraSchro) },
     { name: 'Leonardo Manino', position: 'Vocal 2', specialty: 'Jefe de Guardavidas Costanera Rosario. Chairman comité médico ILS. Caballero en la orden del salvamento de la ILS.', image: getImageUrl(vocalImages.leonardoManino) },
-    { name: 'Juan Manuel Peresson', position: 'Vocal 3', specialty: 'Atención Prehospitalaria', image: getImageUrl(vocalImages.placeholder) },
+    { name: 'Juan Manuel Peresson', position: 'Vocal 3', specialty: 'Atención Prehospitalaria', image: null },
     { name: 'Nelson Mir', position: 'Vocal 4', specialty: 'Tec. Sup. en Emergencias Médicas - Director de Emergencias de la provincia de Santiago del Estero', image: getImageUrl(vocalImages.nelsonMir) },
     { name: 'Luciana Espindola', position: 'Vocal Suplente', specialty: 'Medicina de Emergencias', image: getImageUrl(vocalImages.lucianaEspindola) },
     { name: 'Rodrigo Garcia Marte', position: 'Vocal Suplente', specialty: 'Técnico en Emergencias Extrahospitalarias - Jefe del Depto. Técnico Operativo de Emergencias - Tierra del Fuego', image: getImageUrl(vocalImages.rodrigoGarciaMarte) },
@@ -313,11 +313,17 @@ export default function Authorities() {
                   >
                     {/* Imagen de fondo */}
                     <div className="aspect-[3/4] bg-gray-200 overflow-hidden">
-                      <img
-                        src={vocal.image}
-                        alt={`Fotografía de ${vocal.name}, ${vocal.position} de SAMPRE`}
-                        className="w-full h-full object-cover object-top"
-                      />
+                      {vocal.image ? (
+                        <img
+                          src={vocal.image}
+                          alt={`Fotografía de ${vocal.name}, ${vocal.position} de SAMPRE`}
+                          className="w-full h-full object-cover object-top"
+                        />
+                      ) : (
+                        <div className="w-full h-full bg-gradient-to-br from-gray-300 to-gray-400 flex items-center justify-center">
+                          <Users className="w-24 h-24 text-gray-500 opacity-30" />
+                        </div>
+                      )}
                     </div>
 
                     {/* Overlay con info - se expande al hacer hover o click */}

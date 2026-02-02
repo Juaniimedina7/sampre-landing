@@ -133,6 +133,7 @@ export default function UpcomingEvents() {
                     href={event.website || '#contacto'}
                     target={event.website ? '_blank' : undefined}
                     rel={event.website ? 'noopener noreferrer' : undefined}
+                    aria-label={`Más información sobre ${event.title}`}
                     className="inline-flex items-center px-6 py-2 bg-primary-600 text-white font-semibold rounded-lg hover:bg-primary-700 transition-colors"
                   >
                     Más información
@@ -140,6 +141,7 @@ export default function UpcomingEvents() {
                   </a>
                   <a
                     href="#contacto"
+                    aria-label={`Inscribirse a ${event.title}`}
                     className="inline-flex items-center px-6 py-2 border-2 border-primary-600 text-primary-600 font-semibold rounded-lg hover:bg-primary-50 transition-colors"
                   >
                     Inscribirse
@@ -154,6 +156,7 @@ export default function UpcomingEvents() {
         <div className="mt-12 text-center">
           <a
             href="/eventos"
+            aria-label="Ver archivo completo de eventos pasados de SAMPRE"
             className="inline-flex items-center px-6 py-3 bg-primary-600 text-white font-semibold rounded-lg hover:bg-primary-700 transition-all shadow-lg hover:shadow-xl hover:scale-105"
           >
             Ver eventos pasados

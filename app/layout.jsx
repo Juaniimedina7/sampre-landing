@@ -44,7 +44,7 @@ export const metadata = {
         url: '/images/logos/logo-sampre.PNG',
         width: 1200,
         height: 630,
-        alt: 'SAMPRE Logo',
+        alt: 'SAMPRE - Sociedad Argentina de Medicina Prehospitalaria',
       },
     ],
   },

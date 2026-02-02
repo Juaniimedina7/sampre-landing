@@ -126,7 +126,7 @@ export default function Committees() {
                 Los comités de SAMPRE están conformados por profesionales expertos en cada área, trabajando de manera colaborativa para el avance de la medicina prehospitalaria en Argentina.
               </p>
               <p className="text-sm text-gray-600">
-                Para más información sobre cada comité o para participar, contactanos a través de nuestro formulario.
+                Para más información sobre cada comité o para participar, contáctanos a través de nuestro formulario.
               </p>
             </div>
           </div>

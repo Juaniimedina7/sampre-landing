@@ -79,6 +79,7 @@ export default function Hero() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
               href="#sobre-nosotros"
+              aria-label="Conocer más sobre SAMPRE"
               className="inline-flex items-center justify-center px-8 py-4 bg-primary-600 text-white font-semibold rounded-lg hover:bg-primary-700 transition-all shadow-xl hover:shadow-2xl hover:scale-105 border border-white/20"
             >
               Conocer más
@@ -86,9 +87,10 @@ export default function Hero() {
             </a>
             <a
               href="#contacto"
+              aria-label="Asóciate a SAMPRE"
               className="inline-flex items-center justify-center px-8 py-4 bg-white/95 backdrop-blur-sm text-primary-600 font-semibold rounded-lg hover:bg-white transition-all shadow-xl hover:shadow-2xl hover:scale-105"
             >
-              Asociate
+              Asóciate
             </a>
           </div>
         </div>

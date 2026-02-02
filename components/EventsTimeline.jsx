@@ -67,7 +67,10 @@ export default function EventsTimeline() {
                       {event.description}
                     </p>
 
-                    <button className="inline-flex items-center text-primary-600 hover:text-primary-700 font-semibold text-sm">
+                    <button
+                      aria-label={`Ver detalles de ${event.title}`}
+                      className="inline-flex items-center text-primary-600 hover:text-primary-700 font-semibold text-sm"
+                    >
                       Ver detalles
                       <ChevronRight className="w-4 h-4 ml-1" />
                     </button>
@@ -101,6 +104,7 @@ export default function EventsTimeline() {
               {/* Close button */}
               <button
                 onClick={() => setSelectedEvent(null)}
+                aria-label="Cerrar detalles del evento"
                 className="absolute top-4 right-4 w-10 h-10 bg-white/90 hover:bg-white rounded-full flex items-center justify-center transition-colors"
               >
                 <X className="w-6 h-6 text-gray-900" />
@@ -166,6 +170,7 @@ export default function EventsTimeline() {
                   href={selectedEvent.website}
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label={`Visitar sitio web de ${selectedEvent.title}`}
                   className="inline-flex items-center px-6 py-3 bg-primary-600 text-white font-semibold rounded-lg hover:bg-primary-700 transition-colors shadow-lg hover:shadow-xl"
                 >
                   Visitar sitio web del evento

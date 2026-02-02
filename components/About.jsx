@@ -93,7 +93,7 @@ export default function About() {
             extrahospitalario, así como todo lo que atañe a la medicina en situación de desastres.
           </p>
           <p className="text-gray-700 leading-relaxed">
-            Trabajamos sobre la base de una organización conformada por Comités Especializados que encarán
+            Trabajamos sobre la base de una organización conformada por Comités Especializados que encaran
             programas de carácter permanente o transitorio, funcionando como comisiones asesoras y ejecutoras
             de programas científicos y técnicos según el área de su especialización.
           </p>

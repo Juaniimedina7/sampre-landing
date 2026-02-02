@@ -34,37 +34,37 @@ export default function Authorities() {
       name: 'Gabriel Sosa',
       position: 'Vicepresidente',
       specialty: 'Lic. En Protección Civil y Emergencias - Mg. Internacional en Gestión de Riesgos y Desastres - Coord. Tecnicatura en Emergencias Sanitarias y Desastres - UNAJ Coor. Docencia de la Dirección de Manejo de Emergencias y Catástrofes.',
-      image: getImageUrl(authorityImages.vicepresidenta),
+      image: getImageUrl(authorityImages.vicepresidente),
     },
     {
       name: 'Lucas Henkel',
       position: 'Secretario Administrativo',
       specialty: 'Tec. Sup. en Emergencias Médicas - Especialidad med Montaña ICAR - Facultado NAEMT PHTLS AMLS - Instructor ACLS - Miembro Comité Latinoaméricano de Educación NAEMT - Director SAR Bariloche',
-      image: getImageUrl(authorityImages.secretario),
+      image: getImageUrl(authorityImages.secretarioAdministrativo),
     },
     {
       name: 'Ivana Nogueira',
       position: 'Secretaria Académica',
       specialty: 'Lic. en Psicología - Especialista Jerarquizada en Salud Comunitaria, Emergencias y Desastres - Coordinadora PROSAMIC - Jefa de Programa de formación y vinculación en Emergencias Sanitarias de Moreno.',
-      image: getImageUrl(authorityImages.tesorera),
+      image: getImageUrl(authorityImages.secretariaAcademica),
     },
     {
       name: 'Débora Vizcaino',
       position: 'Prosecretaria Administrativa',
       specialty: 'Médica emergentóloga - Directora médica Accudir.',
-      image: getImageUrl(authorityImages.vocal1),
+      image: getImageUrl(authorityImages.prosecretariaAdministrativa),
     },
     {
       name: 'Cristian Bottari',
       position: 'Prosecretario Académico',
       specialty: 'Médico especialista en Infectología, emergencias y desastres – Aero-evacuador – Miembro fundador SAMPRE – Director General del SIES Rosario – Director Médico UTV Aero-emergencias – Jefe de Cátedra de Emergencias UAI – Instructor Internacional PHTLS (NAEMT)',
-      image: getImageUrl(authorityImages.vocal2),
+      image: getImageUrl(authorityImages.prosecretarioAcademico),
     },
   ]
 
   const currentVocales = [
     { name: 'Alejandra Schro', position: 'Vocal 1', specialty: 'Medicina Prehospitalaria', image: getImageUrl(vocalImages.alejandraSchro) },
-    { name: 'Leonardo Manino', position: 'Vocal 2', specialty: 'Medicina Prehospitalaria', image: getImageUrl(vocalImages.placeholder) },
+    { name: 'Leonardo Manino', position: 'Vocal 2', specialty: 'Jefe de Guardavidas Costanera Rosario. Chairman comité médico ILS. Caballero en la orden del salvamento de la ILS.', image: getImageUrl(vocalImages.leonardoManino) },
     { name: 'Juan Manuel Peresson', position: 'Vocal 3', specialty: 'Atención Prehospitalaria', image: getImageUrl(vocalImages.placeholder) },
     { name: 'Nelson Mir', position: 'Vocal 4', specialty: 'Tec. Sup. en Emergencias Médicas - Director de Emergencias de la provincia de Santiago del Estero', image: getImageUrl(vocalImages.nelsonMir) },
     { name: 'Luciana Espindola', position: 'Vocal Suplente', specialty: 'Medicina de Emergencias', image: getImageUrl(vocalImages.lucianaEspindola) },
@@ -258,7 +258,7 @@ export default function Authorities() {
                 <div className="aspect-[3/4] bg-gray-200 overflow-hidden">
                   <img
                     src={authority.image}
-                    alt={authority.name}
+                    alt={`Fotografía de ${authority.name}, ${authority.position} de SAMPRE`}
                     className="w-full h-full object-cover object-top"
                   />
                 </div>
@@ -315,7 +315,7 @@ export default function Authorities() {
                     <div className="aspect-[3/4] bg-gray-200 overflow-hidden">
                       <img
                         src={vocal.image}
-                        alt={vocal.name}
+                        alt={`Fotografía de ${vocal.name}, ${vocal.position} de SAMPRE`}
                         className="w-full h-full object-cover object-top"
                       />
                     </div>

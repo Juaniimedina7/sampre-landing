@@ -16,7 +16,7 @@ export default function Recognitions() {
       name: 'Dr. Marcelo Muro',
       title: 'Director General SAME GCBA',
       description: 'Especialista en Cirugía General y Emergentología. Director del Sistema de Atención Médica de Emergencias de la Ciudad de Buenos Aires.',
-      image: 'https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=400&q=80',
+      image: '/images/mentions/marcelo-muro.jpg',
       specialty: 'Emergentología',
     },
     {
@@ -117,7 +117,7 @@ export default function Recognitions() {
             Destacados de la Medicina Prehospitalaria
           </h2>
           <p className="text-lg text-gray-600">
-            Honramos a los profesionales y organizaciones que han contribuido significativamente al desarrollo de nuestra especialidad
+            En cada congreso oficial que se realiza cada dos años, la Sociedad Argentina de Medicina Prehospitalaria honra a los profesionales y organizaciones que han contribuido significativamente al desarrollo de la medicina prehospitalaria.
           </p>
         </div>
 
@@ -155,7 +155,7 @@ export default function Recognitions() {
                   <div className="h-64 overflow-hidden relative">
                     <img
                       src={person.image}
-                      alt={person.name}
+                      alt={`Fotografía de ${person.name}, ${person.title}`}
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
@@ -189,7 +189,7 @@ export default function Recognitions() {
                 <div className="h-64 overflow-hidden relative">
                   <img
                     src={recognitions[currentIndex].image}
-                    alt={recognitions[currentIndex].name}
+                    alt={`Fotografía de ${recognitions[currentIndex].name}, ${recognitions[currentIndex].title}`}
                     className="w-full h-full object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />

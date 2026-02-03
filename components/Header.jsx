@@ -12,8 +12,9 @@ export default function Header() {
     { href: '#sobre-nosotros', label: 'Sobre Nosotros' },
     { href: '#servicios', label: 'Servicios' },
     { href: '#proximos-eventos', label: 'Eventos' },
-    { href: '#comites', label: 'Comités' },
-    { href: '#autoridades', label: 'Autoridades' },
+    // OCULTO HASTA QUE ASUMA LA COMISIÓN 2026-2028 - Para mostrar, elimina las // de las líneas de abajo
+    // { href: '#comites', label: 'Comités' },
+    // { href: '#autoridades', label: 'Autoridades' },
     { href: '#contacto', label: 'Contacto' },
   ]
 

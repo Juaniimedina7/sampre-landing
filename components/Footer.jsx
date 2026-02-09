@@ -15,7 +15,7 @@ export default function Footer() {
   ]
 
   const socialLinks = [
-    { icon: Instagram, href: 'https://www.instagram.com/sampre_argentina', label: 'Instagram' },
+    { icon: Instagram, href: 'https://www.instagram.com/sampre.ar', label: 'Instagram' },
     { icon: Facebook, href: 'https://www.facebook.com/SAMPREoficial', label: 'Facebook' },
     { icon: Youtube, href: 'https://www.youtube.com/@samprearg8206', label: 'YouTube' },
   ]

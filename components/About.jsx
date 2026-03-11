@@ -45,7 +45,7 @@ export default function About() {
     {
       icon: Globe,
       title: 'Participación Internacional',
-      description: 'Promover la participación del personal de salud en foros científicos nacionales, regionales (Mercosur) e internacionales de Medicina de Emergencias.',
+      description: 'Promover la participación del personal de salud en foros científicos nacionales, regionales (MERCOSUR) e internacionales de Medicina de Emergencias.',
     },
     {
       icon: Scale,

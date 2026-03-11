@@ -20,6 +20,18 @@ export default function UpcomingEvents() {
       website: null,
     },
     {
+      title: '4tas Jornadas de Emergencia de Adultos 2026',
+      date: '21-23 Mayo 2026',
+      location: 'CENUR Paysandú, Florida esq. Mdeo.',
+      time: '21 mayo pre-congreso, 22-23 mayo jornadas',
+      attendees: '200+',
+      description: 'Jornadas organizadas por el Departamento de Emergencias de Hospital de Paysandú y CEDA Emergentología Paysandú. Temas centrales: Trauma y atención crítica, protocolos y actualizaciones, mesas especiales sobre figura legal del paramédico, gestión en servicios de salud y simulación educativa.',
+      category: 'Jornada Científica',
+      featured: false,
+      image: getImageUrl(eventImages.jornadaEmergencias2026),
+      website: null,
+    },
+    {
       title: 'V Congreso Latinoamericano de Emergencias Prehospitalarias',
       date: '27-30 Mayo 2026',
       location: 'Lima, Perú',

@@ -9,8 +9,7 @@ export default function Footer() {
     { href: '#sobre-nosotros', label: 'Sobre Nosotros' },
     { href: '#servicios', label: 'Servicios' },
     { href: '#proximos-eventos', label: 'Próximos Eventos' },
-    // OCULTO HASTA QUE ASUMA LA COMISIÓN 2026-2028 - Para mostrar, elimina las // de la línea de abajo
-    // { href: '#autoridades', label: 'Autoridades' },
+    { href: '#autoridades', label: 'Autoridades' },
     { href: '#contacto', label: 'Contacto' },
   ]
 

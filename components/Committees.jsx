@@ -50,7 +50,7 @@ export default function Committees() {
     { id: 14, name: 'Cuidados Domiciliarios', leader: 'Barbaro Donnet', icon: Home },
     { id: 15, name: 'Salvamento y Rescate Acuático', leader: 'Hernán Muñoz', icon: Droplet },
     { id: 16, name: 'Legales', leader: 'Lucas Orlando', icon: Scale },
-    { id: 17, name: 'Medicina Agreste', leader: 'En desarrollo', icon: Mountain },
+    { id: 17, name: 'Medicina Agreste', leader: 'Kevin Bleuer y Mercedes Galindez', icon: Mountain },
     { id: 18, name: 'Género e Interculturalidad', leader: 'En desarrollo', icon: UsersRound },
     { id: 19, name: 'Pediatría', leader: 'Norma Raúl', icon: Baby },
     { id: 20, name: 'Enfermería', leader: 'Claudio Velazco', icon: Stethoscope },

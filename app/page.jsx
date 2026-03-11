@@ -18,11 +18,8 @@ export default function Home() {
       <Services />
       <UpcomingEvents />
       <Recognitions />
-      {/* OCULTO HASTA QUE ASUMA LA COMISIÓN 2026-2028
-          Para mostrar de nuevo, elimina las líneas {/* y *//* que rodean <Committees /> y <Authorities />
       <Committees />
       <Authorities />
-      */}
       <Contact />
       <Footer />
     </main>

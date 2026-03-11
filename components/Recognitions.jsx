@@ -24,7 +24,7 @@ export default function Recognitions() {
       name: 'Dra. Andrea Potes',
       title: 'Jefe Servicio de Guardia',
       description: 'Especialista en Cirugía General. Jefe del Servicio de Guardia del Hospital Interzonal HIGA Dr. Oscar Alende Mar del Plata.',
-      image: null,
+      image: '/images/mentions/andrea-potes.png',
       specialty: 'Cirugía General',
     },
     {

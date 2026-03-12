@@ -88,7 +88,7 @@ export default function Authorities() {
     },
     {
       name: 'Gabriel Sosa',
-      position: 'Secretario Científico',
+      position: 'Secretario Académico',
     },
     {
       name: 'Claudio Velazco',
@@ -96,7 +96,7 @@ export default function Authorities() {
     },
     {
       name: 'Adrián Schneider',
-      position: 'Pro Secretario Científico',
+      position: 'Pro Secretario Académica',
     },
     {
       name: 'Aníbal Feder',
@@ -123,8 +123,8 @@ export default function Authorities() {
       position: 'Vicepresidente',
     },
     {
-      name: 'Flavio Rodriguez',
-      position: 'Secretario Científico',
+      name: 'William Medina',
+      position: 'Secretario Académico',
     },
     {
       name: 'Manuel Molina Pico',
@@ -132,7 +132,7 @@ export default function Authorities() {
     },
     {
       name: 'Gabriel Sosa',
-      position: 'Pro Secretario Científico',
+      position: 'Pro Secretario Académico',
     },
     {
       name: 'Claudio Velazco',

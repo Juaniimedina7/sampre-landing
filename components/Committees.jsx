@@ -39,7 +39,7 @@ export default function Committees() {
     { id: 3, name: 'Búsqueda y Rescate', leader: 'Mariano Ledesma', icon: Search },
     { id: 4, name: 'Trauma', leader: 'Alejandra Schro', icon: Heart },
     { id: 5, name: 'Técnicos en Emergencias', leader: 'Luciano Gandini y Giuliana Morlino', icon: Users },
-    { id: 6, name: 'Transporte Sanitario', leader: 'Sebastián Fernández', icon: Truck },
+    { id: 6, name: 'Transporte Sanitario', leader: 'Sebastián Fernández y Rodrigo Anaquin', icon: Truck },
     { id: 7, name: 'Mejores Prácticas', leader: 'Ricardo Quintero', icon: FileCheck },
     { id: 8, name: 'Gestión', leader: 'Daniel Maffei', icon: Settings },
     { id: 9, name: 'Seguridad del Paciente', leader: 'Marcelo Pechieu', icon: Shield },
@@ -55,7 +55,7 @@ export default function Committees() {
     { id: 19, name: 'Pediatría', leader: 'Norma Raúl', icon: Baby },
     { id: 20, name: 'Enfermería', leader: 'Claudio Velazco', icon: Stethoscope },
     { id: 21, name: 'Revalidación', leader: 'Silvio Aguilera', icon: CheckCircle },
-    { id: 22, name: 'Editorial', leader: 'Lucas Henkel', icon: BookOpen },
+    { id: 22, name: 'Editorial', leader: 'Lucas Henkel y Leonardo Manino', icon: BookOpen },
   ]
 
   return (

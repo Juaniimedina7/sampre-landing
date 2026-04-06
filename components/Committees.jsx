@@ -46,7 +46,7 @@ export default function Committees() {
     { id: 10, name: 'Medicina Táctica', leader: 'Diego Álvarez', icon: Target },
     { id: 11, name: 'Reanimación', leader: 'Diego Pizzini', icon: Activity },
     { id: 12, name: 'Tecnología en Emergencias', leader: 'Gustavo Daquarti', icon: Smartphone },
-    { id: 13, name: 'Salud Mental', leader: 'Ivana Nogueira', icon: Brain },
+    { id: 13, name: 'Salud Mental', leader: 'Luciano Alturria', icon: Brain },
     { id: 14, name: 'Cuidados Domiciliarios', leader: 'Barbaro Donnet', icon: Home },
     { id: 15, name: 'Salvamento y Rescate Acuático', leader: 'Hernán Muñoz', icon: Droplet },
     { id: 16, name: 'Legales', leader: 'Lucas Orlando', icon: Scale },

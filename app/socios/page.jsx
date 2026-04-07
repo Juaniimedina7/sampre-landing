@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { ArrowLeft, ArrowRight, CheckCircle, Users, Star, Shield, Vote, Briefcase, BookOpen, Trophy } from 'lucide-react'
 import { logos, getImageUrl } from '@/lib/images'
 
-const GOOGLE_FORM_URL = '#'
+const GOOGLE_FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSfOn1pPj-y19f9TEFjrfVsry7yWmNZXvGgZZxpDdMn7aMwXOQ/viewform?usp=publish-editor'
 
 const activoBeneficios = [
   { icon: BookOpen, text: 'Participación en actividades científicas, jornadas y espacios académicos' },

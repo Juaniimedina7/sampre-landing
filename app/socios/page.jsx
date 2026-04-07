@@ -2,23 +2,38 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
-import { ArrowLeft, ArrowRight, CheckCircle, Users, Star, Shield, Vote, Briefcase, BookOpen, Trophy } from 'lucide-react'
+import { ArrowLeft, ArrowRight, CheckCircle, Users, Star, Shield, Vote, Briefcase, BookOpen, Trophy, ClipboardList } from 'lucide-react'
 import { logos, getImageUrl } from '@/lib/images'
 
 const GOOGLE_FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSfOn1pPj-y19f9TEFjrfVsry7yWmNZXvGgZZxpDdMn7aMwXOQ/viewform?usp=publish-editor'
 
 const activoBeneficios = [
-  { icon: BookOpen, text: 'Participación en actividades científicas, jornadas y espacios académicos' },
-  { icon: Users, text: 'Posibilidad de presentar trabajos y formar parte de comités o equipos de trabajo' },
+  { icon: CheckCircle, text: 'Participación en actividades científicas, jornadas y espacios académicos' },
+  { icon: CheckCircle, text: 'Posibilidad de presentar trabajos y formar parte de comités o equipos de trabajo' },
   { icon: CheckCircle, text: 'Integrarse a la comunidad profesional y académica de la especialidad' },
   { icon: CheckCircle, text: 'Voz en actividades científicas' },
 ]
 
+const activoRequisitos = [
+  'Médico, enfermero, técnico en emergencias, socorrista, personal de defensa civil, bomberos, fuerzas armadas o primer respondiente',
+  'Al menos 1 año de experiencia en emergencias prehospitalarias o contextos de desastres',
+  'Desempeño activo y continuo en el área (con certificación)',
+  'Ser aceptado por la Comisión Directiva',
+]
+
+const titularRequisitos = [
+  'Profesional del área de salud o emergencias',
+  'Al menos 5 años de experiencia comprobable en emergencias prehospitalarias o medicina de desastres',
+  'Acreditar formación o especialización afín (título reconocido y/o cursos con carga horaria reconocida)',
+  'Desempeño continuo en servicios de emergencias prehospitalarias o instituciones relacionadas',
+  'Ser aceptado por la Comisión Directiva',
+]
+
 const titularExclusivos = [
-  { icon: Vote, text: 'Voz y voto en las asambleas institucionales' },
-  { icon: Briefcase, text: 'Posibilidad de acceder a cargos en la Comisión Directiva' },
-  { icon: Trophy, text: 'Acceder a roles de liderazgo dentro de la Sociedad (Comités, equipos, etc)' },
-  { icon: Shield, text: 'Participación en la toma de decisiones institucionales' },
+  { icon: CheckCircle, text: 'Voz y voto en las asambleas institucionales' },
+  { icon: CheckCircle, text: 'Posibilidad de acceder a cargos en la Comisión Directiva' },
+  { icon: CheckCircle, text: 'Acceder a roles de liderazgo dentro de la Sociedad (Comités, equipos, etc)' },
+  { icon: CheckCircle, text: 'Participación en la toma de decisiones institucionales' },
 ]
 
 const precios = {
@@ -120,7 +135,7 @@ export default function SociosPage() {
               </div>
 
               <div className="p-8 flex flex-col flex-1">
-                <ul className="space-y-4 mb-8 flex-1">
+                <ul className="space-y-4 mb-8">
                   {activoBeneficios.map((item, i) => (
                     <li key={i} className="flex items-start gap-3">
                       <item.icon className="w-5 h-5 text-secondary-500 flex-shrink-0 mt-0.5" />
@@ -128,6 +143,23 @@ export default function SociosPage() {
                     </li>
                   ))}
                 </ul>
+
+                <div className="border-t border-gray-100 pt-5 mb-6">
+                  <div className="flex items-center gap-2 mb-3">
+                    <ClipboardList className="w-4 h-4 text-gray-400" />
+                    <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide">Requisitos</p>
+                  </div>
+                  <ul className="space-y-2">
+                    {activoRequisitos.map((req, i) => (
+                      <li key={i} className="flex items-start gap-2">
+                        <span className="w-1.5 h-1.5 rounded-full bg-secondary-400 flex-shrink-0 mt-2" />
+                        <span className="text-gray-500 text-xs leading-relaxed">{req}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="flex-1" />
 
                 <div className="border-t border-gray-100 pt-6">
                   <a
@@ -155,18 +187,17 @@ export default function SociosPage() {
 
               <div className="bg-gradient-to-br from-primary-700 to-primary-900 p-8">
                 <div className="w-14 h-14 bg-white/20 rounded-xl flex items-center justify-center mb-4">
-                  <Shield className="w-7 h-7 text-white" />
+                  <Users className="w-7 h-7 text-white" />
                 </div>
                 <h2 className="text-2xl font-bold text-white mb-1">Socio Titular</h2>
                 <p className="text-3xl font-extrabold text-white mt-3">{precios[plan].titular} <span className="text-base font-medium text-white/80">{precios[plan].sufijo}</span></p>
               </div>
 
               <div className="p-8 flex flex-col flex-1">
-                {/* Incluye todo lo del activo */}
                 <p className="text-sm font-semibold text-primary-700 border-l-2 border-primary-600 pl-3 mb-4">
                   Todo lo del Socio Activo, más:
                 </p>
-                <ul className="space-y-4 mb-8 flex-1">
+                <ul className="space-y-4 mb-8">
                   {titularExclusivos.map((item, i) => (
                     <li key={i} className="flex items-start gap-3">
                       <item.icon className="w-5 h-5 text-primary-600 flex-shrink-0 mt-0.5" />
@@ -174,6 +205,23 @@ export default function SociosPage() {
                     </li>
                   ))}
                 </ul>
+
+                <div className="border-t border-gray-100 pt-5 mb-6">
+                  <div className="flex items-center gap-2 mb-3">
+                    <ClipboardList className="w-4 h-4 text-gray-400" />
+                    <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide">Requisitos</p>
+                  </div>
+                  <ul className="space-y-2">
+                    {titularRequisitos.map((req, i) => (
+                      <li key={i} className="flex items-start gap-2">
+                        <span className="w-1.5 h-1.5 rounded-full bg-primary-400 flex-shrink-0 mt-2" />
+                        <span className="text-gray-500 text-xs leading-relaxed">{req}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="flex-1" />
 
                 <div className="border-t border-gray-100 pt-6">
                   <a
@@ -198,7 +246,7 @@ export default function SociosPage() {
       <section className="py-16 bg-gradient-to-br from-primary-800 to-secondary-800">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            ¿Tenés dudas sobre qué categoría elegir?
+            ¿A qué categoría puedo acceder?
           </h2>
           <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
             Estamos a disposición para acompañarte en el proceso de incorporación y responder cualquier consulta.

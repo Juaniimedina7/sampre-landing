@@ -153,7 +153,7 @@ export default function SociosPage() {
                     {activoRequisitos.map((req, i) => (
                       <li key={i} className="flex items-start gap-2">
                         <span className="w-1.5 h-1.5 rounded-full bg-secondary-400 flex-shrink-0 mt-2" />
-                        <span className="text-gray-500 text-xs leading-relaxed">{req}</span>
+                        <span className="text-gray-800 text-xs leading-relaxed">{req}</span>
                       </li>
                     ))}
                   </ul>
@@ -215,7 +215,7 @@ export default function SociosPage() {
                     {titularRequisitos.map((req, i) => (
                       <li key={i} className="flex items-start gap-2">
                         <span className="w-1.5 h-1.5 rounded-full bg-primary-400 flex-shrink-0 mt-2" />
-                        <span className="text-gray-500 text-xs leading-relaxed">{req}</span>
+                        <span className="text-gray-800 text-xs leading-relaxed">{req}</span>
                       </li>
                     ))}
                   </ul>

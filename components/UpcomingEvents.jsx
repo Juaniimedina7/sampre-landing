@@ -8,6 +8,20 @@ export default function UpcomingEvents() {
   const [titleRef, titleInView] = useInView()
   const events = [
     {
+      title: 'Congreso RED LATAM 2026',
+      date: '26 al 30 de agosto',
+      location: 'ESAN Center, Santiago de Surco, Lima - Perú',
+      time: '29 y 30 - Congreso',
+      attendees: '+350',
+      description: 'Cinco días de formación junto a los profesionales más destacados de emergencias, rescate y salud prehospitalaria. Espacio académico estructurado, con aval académico de SAMPRE y el apoyo de NAEMT. Ponencias basadas en evidencia, cursos certificados y conexión directa con la comunidad prehospitalaria regional. Cursos precongreso · Simposio METAS by NAEMT · EXPO científica · EXPO comercial.',
+      category: 'Auspicio Internacional',
+      featured: true,
+      image: getImageUrl(eventImages.congresoRedLatam2026),
+      website: null,
+      programLink: 'https://redamericas.com/programa/',
+      registrationLink: 'https://redamericas.com/entradas/',
+    },
+    {
       title: 'Rally Prehospitalario SAMPRE 2026',
       date: '5-6 Septiembre 2026',
       location: 'Universidad Nacional Arturo Jauretche (UNAJ)',
@@ -15,20 +29,8 @@ export default function UpcomingEvents() {
       attendees: '8-16 equipos',
       description: 'Competencia académica organizada por SAMPRE con escenarios simulados de emergencias prehospitalarias. Los equipos compiten en el manejo de situaciones de emergencia realistas.',
       category: 'Competencia Académica',
-      featured: true,
-      image: getImageUrl(eventImages.rallyPrehospitalario2026),
-      website: null,
-    },
-    {
-      title: '4tas Jornadas de Emergencia de Adultos 2026',
-      date: '21-23 Mayo 2026',
-      location: 'CENUR Paysandú, Florida esq. Mdeo.',
-      time: '21 mayo pre-congreso, 22-23 mayo jornadas',
-      attendees: '200+',
-      description: 'Jornadas organizadas por el Departamento de Emergencias de Hospital de Paysandú y CEDA Emergentología Paysandú. Temas centrales: Trauma y atención crítica, protocolos y actualizaciones, mesas especiales sobre figura legal del paramédico, gestión en servicios de salud y simulación educativa.',
-      category: 'Jornada Científica',
       featured: false,
-      image: getImageUrl(eventImages.jornadaEmergencias2026),
+      image: getImageUrl(eventImages.rallyPrehospitalario2026),
       website: null,
     },
     {
@@ -42,18 +44,6 @@ export default function UpcomingEvents() {
       featured: false,
       image: getImageUrl(eventImages.congresoLatam2026),
       website: 'https://cces-salud.com/eventos/v-congreso-latinoamericano-emergencias-prehospitalarias/',
-    },
-    {
-      title: 'III Jornada Nacional FEM 2026',
-      date: '7 Mayo 2026',
-      location: 'Hotel Marriott, Carlos Pellegrini 551, Buenos Aires',
-      time: '09:00 - 16:05 hs (acto inaugural 09:30 hs)',
-      attendees: '300+',
-      description: 'Jornada organizada por la Federación de Cámaras de Emergencias Médicas y Medicina Domiciliaria (FEM), auspiciada por SAMPRE. Bajo el lema "El desafío del cambio para una gestión sustentable en el sector", reunirá a referentes del sistema de salud, autoridades públicas y especialistas. Contará con la participación del Ministro de Salud de la Nación, Dr. Mario Iván Lugones, y disertantes de nivel nacional e internacional.',
-      category: 'Auspicio Nacional',
-      featured: false,
-      image: getImageUrl(eventImages.jornadaFEM2026),
-      website: null,
     },
   ]
 
@@ -142,17 +132,19 @@ export default function UpcomingEvents() {
 
                 <div className="flex gap-3">
                   <a
-                    href={event.website || '#contacto'}
-                    target={event.website ? '_blank' : undefined}
-                    rel={event.website ? 'noopener noreferrer' : undefined}
-                    aria-label={`Más información sobre ${event.title}`}
+                    href={event.programLink || event.website || '#contacto'}
+                    target={event.programLink || event.website ? '_blank' : undefined}
+                    rel={event.programLink || event.website ? 'noopener noreferrer' : undefined}
+                    aria-label={`${event.programLink ? 'Ver programa de' : 'Más información sobre'} ${event.title}`}
                     className="inline-flex items-center px-6 py-2 bg-primary-600 text-white font-semibold rounded-lg hover:bg-primary-700 transition-colors"
                   >
-                    Más información
+                    {event.programLink ? 'Programa' : 'Más información'}
                     <ArrowRight className="ml-2 w-4 h-4" />
                   </a>
                   <a
-                    href="#contacto"
+                    href={event.registrationLink || '#contacto'}
+                    target={event.registrationLink ? '_blank' : undefined}
+                    rel={event.registrationLink ? 'noopener noreferrer' : undefined}
                     aria-label={`Inscribirse a ${event.title}`}
                     className="inline-flex items-center px-6 py-2 border-2 border-primary-600 text-primary-600 font-semibold rounded-lg hover:bg-primary-50 transition-colors"
                   >

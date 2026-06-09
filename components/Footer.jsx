@@ -37,8 +37,8 @@ export default function Footer() {
             </p>
             <div className="flex items-center space-x-2 text-gray-400">
               <Mail className="w-5 h-5" />
-              <a href="mailto:sampreweb@gmail.com" className="hover:text-primary-400 transition-colors">
-                sampreweb@gmail.com
+              <a href="mailto:info@sampre.com.ar" className="hover:text-primary-400 transition-colors">
+                info@sampre.com.ar
               </a>
             </div>
           </div>

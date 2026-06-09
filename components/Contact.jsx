@@ -30,7 +30,7 @@ export default function Contact() {
 
     try {
       // Usando FormSubmit para enviar emails sin backend
-      const response = await fetch('https://formsubmit.co/sampreweb@gmail.com', {
+      const response = await fetch('https://formsubmit.co/info@sampre.com.ar', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -65,8 +65,8 @@ export default function Contact() {
     {
       icon: Mail,
       title: 'Email',
-      content: 'sampreweb@gmail.com',
-      link: 'mailto:sampreweb@gmail.com',
+      content: 'info@sampre.com.ar',
+      link: 'mailto:info@sampre.com.ar',
     },
     {
       icon: Phone,

@@ -6,7 +6,22 @@ import { useInView } from '@/hooks/useInView'
 
 export default function UpcomingEvents() {
   const [titleRef, titleInView] = useInView()
+  const isExternal = (url) => !!url && !url.startsWith('/') && !url.startsWith('#')
+
   const events = [
+    {
+      title: 'Rally Prehospitalario SAMPRE 2026',
+      date: '5-6 Septiembre 2026',
+      location: 'Universidad Nacional Arturo Jauretche (UNAJ)',
+      time: '09:00 - 18:00 hs',
+      attendees: '8-16 equipos',
+      description: 'Competencia académica organizada por SAMPRE con escenarios simulados realistas de emergencias prehospitalarias. Equipos de 5 integrantes + coach compiten en RCP, trauma, vía aérea y manejo de crisis bajo protocolos PHTLS, ATLS, ACLS y AMLS. Avalado por SASIM y UNAJ.',
+      category: 'Competencia Académica',
+      featured: true,
+      image: getImageUrl(eventImages.rallyPrehospitalario2026),
+      website: '/rally-prehospitalario',
+      registrationLink: '/rally-prehospitalario#inscripcion',
+    },
     {
       title: 'Congreso RED LATAM 2026',
       date: '26 al 30 de agosto',
@@ -15,35 +30,11 @@ export default function UpcomingEvents() {
       attendees: '+350',
       description: 'Cinco días de formación junto a los profesionales más destacados de emergencias, rescate y salud prehospitalaria. Espacio académico estructurado, con aval académico de SAMPRE y el apoyo de NAEMT. Ponencias basadas en evidencia, cursos certificados y conexión directa con la comunidad prehospitalaria regional. Cursos precongreso · Simposio METAS by NAEMT · EXPO científica · EXPO comercial.',
       category: 'Auspicio Internacional',
-      featured: true,
+      featured: false,
       image: getImageUrl(eventImages.congresoRedLatam2026),
       website: null,
       programLink: 'https://redamericas.com/programa/',
       registrationLink: 'https://redamericas.com/entradas/',
-    },
-    {
-      title: 'Rally Prehospitalario SAMPRE 2026',
-      date: '5-6 Septiembre 2026',
-      location: 'Universidad Nacional Arturo Jauretche (UNAJ)',
-      time: '09:00 - 18:00 hs',
-      attendees: '8-16 equipos',
-      description: 'Competencia académica organizada por SAMPRE con escenarios simulados de emergencias prehospitalarias. Los equipos compiten en el manejo de situaciones de emergencia realistas.',
-      category: 'Competencia Académica',
-      featured: false,
-      image: getImageUrl(eventImages.rallyPrehospitalario2026),
-      website: null,
-    },
-    {
-      title: 'V Congreso Latinoamericano de Emergencias Prehospitalarias',
-      date: '27-30 Mayo 2026',
-      location: 'Lima, Perú',
-      time: '27 mayo pre-congreso, 28-30 mayo congreso',
-      attendees: '500+',
-      description: 'Congreso internacional auspiciado por SAMPRE, organizado por CCES SALUD con acreditación de 3 créditos por la Facultad de Medicina Humana de la UNSM. Aborda ejes temáticos como gestión de riesgos y desastres, trauma, emergencias cardiovasculares, innovación y tecnología en APH, y escenarios especiales.',
-      category: 'Auspicio Internacional',
-      featured: false,
-      image: getImageUrl(eventImages.congresoLatam2026),
-      website: 'https://cces-salud.com/eventos/v-congreso-latinoamericano-emergencias-prehospitalarias/',
     },
   ]
 
@@ -131,25 +122,37 @@ export default function UpcomingEvents() {
                 </div>
 
                 <div className="flex gap-3">
-                  <a
-                    href={event.programLink || event.website || '#contacto'}
-                    target={event.programLink || event.website ? '_blank' : undefined}
-                    rel={event.programLink || event.website ? 'noopener noreferrer' : undefined}
-                    aria-label={`${event.programLink ? 'Ver programa de' : 'Más información sobre'} ${event.title}`}
-                    className="inline-flex items-center px-6 py-2 bg-primary-600 text-white font-semibold rounded-lg hover:bg-primary-700 transition-colors"
-                  >
-                    {event.programLink ? 'Programa' : 'Más información'}
-                    <ArrowRight className="ml-2 w-4 h-4" />
-                  </a>
-                  <a
-                    href={event.registrationLink || '#contacto'}
-                    target={event.registrationLink ? '_blank' : undefined}
-                    rel={event.registrationLink ? 'noopener noreferrer' : undefined}
-                    aria-label={`Inscribirse a ${event.title}`}
-                    className="inline-flex items-center px-6 py-2 border-2 border-primary-600 text-primary-600 font-semibold rounded-lg hover:bg-primary-50 transition-colors"
-                  >
-                    Inscribirse
-                  </a>
+                  {(() => {
+                    const infoHref = event.programLink || event.website || '#contacto'
+                    const infoExternal = isExternal(infoHref)
+                    return (
+                      <a
+                        href={infoHref}
+                        target={infoExternal ? '_blank' : undefined}
+                        rel={infoExternal ? 'noopener noreferrer' : undefined}
+                        aria-label={`${event.programLink ? 'Ver programa de' : 'Más información sobre'} ${event.title}`}
+                        className="inline-flex items-center px-6 py-2 bg-primary-600 text-white font-semibold rounded-lg hover:bg-primary-700 transition-colors"
+                      >
+                        {event.programLink ? 'Programa' : 'Más información'}
+                        <ArrowRight className="ml-2 w-4 h-4" />
+                      </a>
+                    )
+                  })()}
+                  {(() => {
+                    const regHref = event.registrationLink || '#contacto'
+                    const regExternal = isExternal(regHref)
+                    return (
+                      <a
+                        href={regHref}
+                        target={regExternal ? '_blank' : undefined}
+                        rel={regExternal ? 'noopener noreferrer' : undefined}
+                        aria-label={`Inscribirse a ${event.title}`}
+                        className="inline-flex items-center px-6 py-2 border-2 border-primary-600 text-primary-600 font-semibold rounded-lg hover:bg-primary-50 transition-colors"
+                      >
+                        Inscribirse
+                      </a>
+                    )
+                  })()}
                 </div>
               </div>
             </div>

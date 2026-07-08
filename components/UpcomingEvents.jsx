@@ -36,6 +36,19 @@ export default function UpcomingEvents() {
       programLink: 'https://redamericas.com/programa/',
       registrationLink: 'https://redamericas.com/entradas/',
     },
+    {
+      title: 'Congreso Uruguayo Internacional de Emergencias 360°',
+      date: '3 y 4 de Diciembre 2026',
+      location: 'Montevideo, Uruguay',
+      time: '2 días de congreso',
+      attendees: '+300',
+      description: 'Congreso auspiciado por SAMPRE, organizado por la Sociedad Uruguaya de Emergencistas (SUE). Enfoque 360°: conferencias magistrales, talleres y simulaciones, redes y colaboración. ¡Inscripciones abiertas!\n\nPreinscripción hasta el 31 de octubre: Médicos $3.000, No médicos $2.000, Postgrados/Residentes $2.000.\n\nInscripción general: Médicos $4.000, No médicos $3.000, Postgrados/Residentes $3.000.\n\nSocios SUE: 50% de descuento en todas las categorías.',
+      category: 'Auspicio Internacional',
+      featured: false,
+      image: getImageUrl(eventImages.congresoUruguayo2026),
+      website: null,
+      registrationLink: 'mailto:uruguayasociedad@gmail.com?subject=Inscripci%C3%B3n%20Congreso%20Uruguayo%20de%20Emergencias%20360%C2%B0',
+    },
   ]
 
   return (
@@ -100,7 +113,7 @@ export default function UpcomingEvents() {
                   {event.title}
                 </h3>
 
-                <p className="text-gray-600 mb-4">{event.description}</p>
+                <p className="text-gray-600 mb-4 whitespace-pre-line">{event.description}</p>
 
                 <div className="grid md:grid-cols-2 gap-3 mb-4">
                   <div className="flex items-center text-gray-700">

@@ -42,7 +42,7 @@ export default function UpcomingEvents() {
       location: 'Montevideo, Uruguay',
       time: '2 días de congreso',
       attendees: '+300',
-      description: 'Congreso auspiciado por SAMPRE, organizado por la Sociedad Uruguaya de Emergencistas (SUE). Enfoque 360°: conferencias magistrales, talleres y simulaciones, redes y colaboración. ¡Inscripciones abiertas!\n\nPreinscripción hasta el 31 de octubre: Médicos $3.000, No médicos $2.000, Postgrados/Residentes $2.000.\n\nInscripción general: Médicos $4.000, No médicos $3.000, Postgrados/Residentes $3.000.\n\nSocios SUE: 50% de descuento en todas las categorías.',
+      description: 'Congreso auspiciado por SAMPRE, organizado por la Sociedad Uruguaya de Emergencistas (SUE). Enfoque 360°: conferencias magistrales, talleres y simulaciones, redes y colaboración. ¡Inscripciones abiertas!\n\nPreinscripción hasta el 31 de octubre: Médicos $3.000, No médicos $2.000, Postgrados/Residentes $2.000. Inscripción general: Médicos $4.000, No médicos $3.000, Postgrados/Residentes $3.000. Socios SUE: 50% de descuento en todas las categorías.',
       category: 'Auspicio Internacional',
       featured: false,
       image: getImageUrl(eventImages.congresoUruguayo2026),

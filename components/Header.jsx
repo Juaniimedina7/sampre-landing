@@ -14,6 +14,7 @@ export default function Header() {
     { href: '#proximos-eventos', label: 'Eventos' },
     { href: '#comites', label: 'Comités' },
     { href: '#autoridades', label: 'Autoridades' },
+    { href: 'https://ramp.sampre.com.ar/', label: 'Revista', external: true },
     { href: '#contacto', label: 'Contacto' },
   ]
 
@@ -36,6 +37,8 @@ export default function Header() {
               <a
                 key={link.href}
                 href={link.href}
+                target={link.external ? '_blank' : undefined}
+                rel={link.external ? 'noopener noreferrer' : undefined}
                 className="text-gray-700 hover:text-primary-600 transition-colors font-medium text-sm"
               >
                 {link.label}
@@ -65,6 +68,8 @@ export default function Header() {
                 <a
                   key={link.href}
                   href={link.href}
+                  target={link.external ? '_blank' : undefined}
+                  rel={link.external ? 'noopener noreferrer' : undefined}
                   className="text-gray-700 hover:text-primary-600 transition-colors font-medium py-2"
                   onClick={() => setIsMenuOpen(false)}
                 >

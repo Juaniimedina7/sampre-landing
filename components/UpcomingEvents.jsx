@@ -11,7 +11,7 @@ export default function UpcomingEvents() {
   const events = [
     {
       title: 'Rally Prehospitalario SAMPRE 2026',
-      date: '5-6 Septiembre 2026',
+      date: '14-15 Noviembre 2026',
       location: 'Universidad Nacional Arturo Jauretche (UNAJ)',
       time: '09:00 - 18:00 hs',
       attendees: '8-16 equipos',

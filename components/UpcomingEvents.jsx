@@ -62,6 +62,19 @@ export default function UpcomingEvents() {
       website: null,
       registrationLink: 'mailto:uruguayasociedad@gmail.com?subject=Inscripci%C3%B3n%20Congreso%20Uruguayo%20de%20Emergencias%20360%C2%B0',
     },
+    {
+      title: 'Curso Soporte Vital y Manejo del Paciente Grave en la Urgencia 2026',
+      date: '1 de Octubre al 25 de Noviembre 2026',
+      location: 'Online · Plataforma redEMC',
+      time: 'Asincrónico · 30 hs acreditables',
+      attendees: 'Médicos y prof. de la salud',
+      description: 'Curso online y asincrónico organizado por la Red de Educación Médica Continua en Iberoamérica (redEMC), con aval académico de SAMPRE. 8 módulos sobre el manejo integral del paciente grave: vía aérea urgente, RCP de alta calidad, soporte eléctrico, shock y monitorización hemodinámica (VExUS), trauma grave y urgencias metabólicas. Dirección académica a cargo de los Dres. Thierry Hernández Gilsoul (México) y Ariel Gacel (Uruguay). Certificado de aprobación de 30 horas verificable.',
+      category: 'Aval Académico',
+      featured: false,
+      image: getImageUrl(eventImages.soporteVital2026),
+      website: 'https://redemc.net/soportevital2026',
+      registrationLink: 'https://redemc.net/soportevital2026',
+    },
   ]
 
   return (

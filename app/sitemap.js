@@ -57,6 +57,12 @@ export default function sitemap() {
       priority: 0.9,
     },
     {
+      url: `${baseUrl}/socios/inscripcion`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
       url: `${baseUrl}/rally-prehospitalario`,
       lastModified: new Date(),
       changeFrequency: 'weekly',

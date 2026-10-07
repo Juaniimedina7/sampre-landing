@@ -5,8 +5,6 @@ import Link from 'next/link'
 import { ArrowLeft, ArrowRight, CheckCircle, Users, Star, Shield, Vote, Briefcase, BookOpen, Trophy, ClipboardList } from 'lucide-react'
 import { logos, getImageUrl } from '@/lib/images'
 
-const GOOGLE_FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSfOn1pPj-y19f9TEFjrfVsry7yWmNZXvGgZZxpDdMn7aMwXOQ/viewform?usp=publish-editor'
-
 const activoBeneficios = [
   { icon: CheckCircle, text: 'Participación en actividades científicas, jornadas y espacios académicos' },
   { icon: CheckCircle, text: 'Posibilidad de presentar trabajos y formar parte de comités o equipos de trabajo' },
@@ -162,15 +160,13 @@ export default function SociosPage() {
                 <div className="flex-1" />
 
                 <div className="border-t border-gray-100 pt-6">
-                  <a
-                    href={GOOGLE_FORM_URL}
-                    target={GOOGLE_FORM_URL !== '#' ? '_blank' : undefined}
-                    rel={GOOGLE_FORM_URL !== '#' ? 'noopener noreferrer' : undefined}
+                  <Link
+                    href="/socios/inscripcion"
                     className="w-full inline-flex items-center justify-center px-6 py-3 bg-secondary-600 text-white font-semibold rounded-lg hover:bg-secondary-700 transition-colors shadow-md hover:shadow-lg"
                   >
                     Asociarme como Activo
                     <ArrowRight className="ml-2 w-4 h-4" />
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -224,15 +220,13 @@ export default function SociosPage() {
                 <div className="flex-1" />
 
                 <div className="border-t border-gray-100 pt-6">
-                  <a
-                    href={GOOGLE_FORM_URL}
-                    target={GOOGLE_FORM_URL !== '#' ? '_blank' : undefined}
-                    rel={GOOGLE_FORM_URL !== '#' ? 'noopener noreferrer' : undefined}
+                  <Link
+                    href="/socios/inscripcion"
                     className="w-full inline-flex items-center justify-center px-6 py-3 bg-primary-600 text-white font-semibold rounded-lg hover:bg-primary-700 transition-colors shadow-md hover:shadow-lg"
                   >
                     Asociarme como Titular
                     <ArrowRight className="ml-2 w-4 h-4" />
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>

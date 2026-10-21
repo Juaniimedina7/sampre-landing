@@ -1,6 +1,6 @@
 export const metadata = {
   title: 'Rally Prehospitalario SAMPRE 2026',
-  description: 'Competencia académica de simulación clínica en emergencias prehospitalarias. 5 y 6 de septiembre de 2026 en la Universidad Nacional Arturo Jauretche (UNAJ). Inscripciones abiertas.',
+  description: 'Competencia académica de simulación clínica en emergencias prehospitalarias. 14 y 15 de noviembre de 2026 en la Universidad Nacional Arturo Jauretche (UNAJ). Inscripciones abiertas.',
   keywords: [
     'Rally Prehospitalario',
     'SAMPRE 2026',
@@ -11,7 +11,7 @@ export const metadata = {
   ],
   openGraph: {
     title: 'Rally Prehospitalario SAMPRE 2026',
-    description: 'Competencia académica de simulación clínica en emergencias prehospitalarias. 5 y 6 de septiembre de 2026 en UNAJ.',
+    description: 'Competencia académica de simulación clínica en emergencias prehospitalarias. 14 y 15 de noviembre de 2026 en UNAJ.',
     url: 'https://sampre.com.ar/rally-prehospitalario',
     type: 'website',
     images: [

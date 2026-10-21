@@ -147,7 +147,7 @@ export default function RallyPrehospitalarioPage() {
                 <Calendar className="w-6 h-6 text-white flex-shrink-0" />
                 <div>
                   <div className="text-xs text-white/70 uppercase tracking-wide">Fecha</div>
-                  <div className="text-white font-semibold">5 y 6 de Septiembre 2026</div>
+                  <div className="text-white font-semibold">14 y 15 de Noviembre 2026</div>
                 </div>
               </div>
               <div className="bg-white/15 backdrop-blur-sm rounded-lg p-4 flex items-center gap-3 border border-white/20">

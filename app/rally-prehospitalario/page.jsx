@@ -21,8 +21,6 @@ import {
 } from 'lucide-react'
 import { logos, getImageUrl, upcomingEventImages } from '@/lib/images'
 
-const FORMSUBMIT_URL = 'https://formsubmit.co/info@sampre.com.ar'
-
 const objetivos = [
   'Evaluar competencias clínicas, técnicas y no técnicas en el ámbito prehospitalario.',
   'Fomentar el trabajo interdisciplinario en emergencias sanitarias.',
@@ -66,17 +64,12 @@ export default function RallyPrehospitalarioPage() {
     const tipo = formType === 'individual' ? 'INDIVIDUAL' : 'INSTITUCIONAL'
 
     try {
-      const response = await fetch(FORMSUBMIT_URL, {
+      const response = await fetch('/api/notify', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          ...data,
-          _subject: `Inscripción Rally SAMPRE 2026 - ${tipo}`,
-          _captcha: 'false',
-          _template: 'table',
+          subject: `Inscripción Rally SAMPRE 2026 - ${tipo}`,
+          data: { ...data, tipo },
         }),
       })
 

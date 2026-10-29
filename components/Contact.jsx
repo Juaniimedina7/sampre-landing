@@ -29,22 +29,18 @@ export default function Contact() {
     setSubmitStatus(null)
 
     try {
-      // Usando FormSubmit para enviar emails sin backend
-      const response = await fetch('https://formsubmit.co/info@sampre.com.ar', {
+      const response = await fetch('/api/notify', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          subject: formData.subject,
-          message: formData.message,
-          _subject: `Contacto SAMPRE: ${formData.subject}`,
-          _captcha: 'false',
-          _template: 'table'
-        })
+          subject: `Contacto SAMPRE: ${formData.subject}`,
+          data: {
+            nombre: formData.name,
+            email: formData.email,
+            asunto: formData.subject,
+            mensaje: formData.message,
+          },
+        }),
       })
 
       if (response.ok) {

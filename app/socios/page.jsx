@@ -1,6 +1,3 @@
-'use client'
-
-import { useState } from 'react'
 import Link from 'next/link'
 import { ArrowLeft, ArrowRight, CheckCircle, Users, Star, Shield, Vote, Briefcase, BookOpen, Trophy, ClipboardList } from 'lucide-react'
 import { logos, getImageUrl } from '@/lib/images'
@@ -35,13 +32,12 @@ const titularExclusivos = [
 ]
 
 const precios = {
-  mensual: { activo: '$8.000', titular: '$10.000', sufijo: 'ARS / mes' },
-  anual:   { activo: '$60.000', titular: '$80.000', sufijo: 'ARS / año' },
+  activo: '$60.000',
+  titular: '$80.000',
+  sufijo: 'ARS / año',
 }
 
 export default function SociosPage() {
-  const [plan, setPlan] = useState('mensual')
-
   return (
     <main className="min-h-screen bg-gradient-to-br from-gray-50 to-white">
 
@@ -94,32 +90,6 @@ export default function SociosPage() {
       <section className="py-16 md:py-24">
         <div className="container mx-auto px-4">
 
-          {/* Toggle mensual / anual */}
-          <div className="flex justify-center mb-10">
-            <div className="inline-flex bg-gray-100 rounded-xl p-1">
-              <button
-                onClick={() => setPlan('mensual')}
-                className={`px-6 py-2 rounded-lg text-sm font-semibold transition-all ${
-                  plan === 'mensual'
-                    ? 'bg-white text-primary-700 shadow'
-                    : 'text-gray-500 hover:text-gray-700'
-                }`}
-              >
-                Mensual
-              </button>
-              <button
-                onClick={() => setPlan('anual')}
-                className={`px-6 py-2 rounded-lg text-sm font-semibold transition-all ${
-                  plan === 'anual'
-                    ? 'bg-white text-primary-700 shadow'
-                    : 'text-gray-500 hover:text-gray-700'
-                }`}
-              >
-                Anual
-              </button>
-            </div>
-          </div>
-
           <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-8 items-stretch">
 
             {/* Socio Activo */}
@@ -129,7 +99,7 @@ export default function SociosPage() {
                   <Users className="w-7 h-7 text-white" />
                 </div>
                 <h2 className="text-2xl font-bold text-white mb-1">Socio Activo</h2>
-                <p className="text-3xl font-extrabold text-white mt-3">{precios[plan].activo} <span className="text-base font-medium text-white/80">{precios[plan].sufijo}</span></p>
+                <p className="text-3xl font-extrabold text-white mt-3">{precios.activo} <span className="text-base font-medium text-white/80">{precios.sufijo}</span></p>
               </div>
 
               <div className="p-8 flex flex-col flex-1">
@@ -186,7 +156,7 @@ export default function SociosPage() {
                   <Users className="w-7 h-7 text-white" />
                 </div>
                 <h2 className="text-2xl font-bold text-white mb-1">Socio Titular</h2>
-                <p className="text-3xl font-extrabold text-white mt-3">{precios[plan].titular} <span className="text-base font-medium text-white/80">{precios[plan].sufijo}</span></p>
+                <p className="text-3xl font-extrabold text-white mt-3">{precios.titular} <span className="text-base font-medium text-white/80">{precios.sufijo}</span></p>
               </div>
 
               <div className="p-8 flex flex-col flex-1">

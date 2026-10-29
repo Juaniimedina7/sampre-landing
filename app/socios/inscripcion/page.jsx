@@ -1,11 +1,10 @@
 'use client'
 
 import { useState } from 'react'
+import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { ArrowLeft, Send, ClipboardList, ShieldCheck } from 'lucide-react'
 import { logos, getImageUrl } from '@/lib/images'
-
-const FORMSUBMIT_URL = 'https://formsubmit.co/info@sampre.com.ar'
 
 const requisitos = {
   activo: [
@@ -27,7 +26,29 @@ const profesiones = [
 ]
 
 export default function InscripcionPage() {
+  const router = useRouter()
   const [categoria, setCategoria] = useState('activo')
+  const [submitting, setSubmitting] = useState(false)
+  const [error, setError] = useState(null)
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    setSubmitting(true)
+    setError(null)
+    try {
+      const res = await fetch('/api/inscripcion', { method: 'POST', body: new FormData(e.target) })
+      if (res.ok) {
+        router.push('/socios/gracias')
+      } else {
+        const { error } = await res.json().catch(() => ({}))
+        setError(error || 'No se pudo enviar. Intentá de nuevo.')
+        setSubmitting(false)
+      }
+    } catch {
+      setError('No se pudo enviar. Revisá tu conexión e intentá de nuevo.')
+      setSubmitting(false)
+    }
+  }
 
   return (
     <main className="min-h-screen bg-gradient-to-br from-gray-50 to-white">
@@ -56,20 +77,9 @@ export default function InscripcionPage() {
           </div>
 
           <form
-            action={FORMSUBMIT_URL}
-            method="POST"
-            encType="multipart/form-data"
+            onSubmit={handleSubmit}
             className="max-w-3xl mx-auto bg-gray-50 rounded-2xl p-6 md:p-10 border border-gray-200 space-y-5"
           >
-            {/* Controles FormSubmit */}
-            <input type="hidden" name="_subject" value={`Nueva solicitud de socio — ${categoria === 'activo' ? 'Activo' : 'Titular'}`} />
-            <input type="hidden" name="_template" value="table" />
-            <input type="hidden" name="_next" value="https://sampre.com.ar/socios/gracias" />
-            <input
-              type="hidden"
-              name="_autoresponse"
-              value="¡Gracias por tu interés en asociarte a SAMPRE! Recibimos tu solicitud y tu CV. La Comisión Directiva la evaluará y te responderemos por este medio. Si es aprobada, te enviaremos los datos para abonar la cuota societaria. Consultas: info@sampre.com.ar"
-            />
             {/* Honeypot anti-spam */}
             <input type="text" name="_honey" style={{ display: 'none' }} tabIndex={-1} autoComplete="off" />
             <input type="hidden" name="categoria" value={categoria === 'activo' ? 'Socio Activo' : 'Socio Titular'} />
@@ -153,15 +163,20 @@ export default function InscripcionPage() {
 
             <button
               type="submit"
-              className="w-full inline-flex items-center justify-center px-6 py-3 bg-primary-600 text-white font-semibold rounded-lg hover:bg-primary-700 transition-colors shadow-md hover:shadow-lg"
+              disabled={submitting}
+              className="w-full inline-flex items-center justify-center px-6 py-3 bg-primary-600 text-white font-semibold rounded-lg hover:bg-primary-700 transition-colors shadow-md hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              Enviar solicitud
+              {submitting ? 'Enviando...' : 'Enviar solicitud'}
               <Send className="ml-2 w-4 h-4" />
             </button>
 
+            {error && (
+              <p className="text-sm text-red-600 text-center">{error}</p>
+            )}
+
             <p className="flex items-center justify-center gap-1.5 text-xs text-gray-400">
               <ShieldCheck className="w-3.5 h-3.5" />
-              Vas a ver una verificación anti-spam antes de confirmar el envío.
+              Tus datos y tu CV se envían a la Comisión Directiva de SAMPRE.
             </p>
           </form>
         </div>

@@ -4,6 +4,8 @@ import { useState } from 'react'
 import { Mail, Phone, MapPin, Send } from 'lucide-react'
 import { useInView } from '@/hooks/useInView'
 
+const WEB3FORMS_KEY = '63a667c6-b4cc-467d-adc0-35632c56da9c'
+
 export default function Contact() {
   const [titleRef, titleInView] = useInView()
   const [formData, setFormData] = useState({
@@ -29,21 +31,22 @@ export default function Contact() {
     setSubmitStatus(null)
 
     try {
-      const response = await fetch('/api/notify', {
+      const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
         body: JSON.stringify({
+          access_key: WEB3FORMS_KEY,
           subject: `Contacto SAMPRE: ${formData.subject}`,
-          data: {
-            nombre: formData.name,
-            email: formData.email,
-            asunto: formData.subject,
-            mensaje: formData.message,
-          },
+          from_name: 'SAMPRE Web',
+          nombre: formData.name,
+          email: formData.email,
+          asunto: formData.subject,
+          mensaje: formData.message,
         }),
       })
+      const result = await response.json()
 
-      if (response.ok) {
+      if (result.success) {
         setSubmitStatus('success')
         setFormData({ name: '', email: '', subject: '', message: '' })
       } else {

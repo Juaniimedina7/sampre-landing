@@ -21,6 +21,8 @@ import {
 } from 'lucide-react'
 import { logos, getImageUrl, upcomingEventImages } from '@/lib/images'
 
+const WEB3FORMS_KEY = '63a667c6-b4cc-467d-adc0-35632c56da9c'
+
 const objetivos = [
   'Evaluar competencias clínicas, técnicas y no técnicas en el ámbito prehospitalario.',
   'Fomentar el trabajo interdisciplinario en emergencias sanitarias.',
@@ -64,16 +66,20 @@ export default function RallyPrehospitalarioPage() {
     const tipo = formType === 'individual' ? 'INDIVIDUAL' : 'INSTITUCIONAL'
 
     try {
-      const response = await fetch('/api/notify', {
+      const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
         body: JSON.stringify({
+          access_key: WEB3FORMS_KEY,
           subject: `Inscripción Rally SAMPRE 2026 - ${tipo}`,
-          data: { ...data, tipo },
+          from_name: 'SAMPRE Web',
+          ...data,
+          tipo,
         }),
       })
+      const result = await response.json()
 
-      if (response.ok) {
+      if (result.success) {
         setSubmitStatus('success')
         e.target.reset()
       } else {

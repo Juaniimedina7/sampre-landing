@@ -6,6 +6,8 @@ import Link from 'next/link'
 import { ArrowLeft, Send, ClipboardList, ShieldCheck } from 'lucide-react'
 import { logos, getImageUrl } from '@/lib/images'
 
+const WEB3FORMS_KEY = '63a667c6-b4cc-467d-adc0-35632c56da9c'
+
 const requisitos = {
   activo: [
     'Médico, enfermero, técnico en emergencias, socorrista, defensa civil, bombero, fuerzas armadas o primer respondiente',
@@ -36,12 +38,22 @@ export default function InscripcionPage() {
     setSubmitting(true)
     setError(null)
     try {
-      const res = await fetch('/api/inscripcion', { method: 'POST', body: new FormData(e.target) })
-      if (res.ok) {
+      const data = Object.fromEntries(new FormData(e.target).entries())
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_KEY,
+          subject: `Nueva solicitud de socio — ${data.categoria || ''}`,
+          from_name: 'SAMPRE Web',
+          ...data,
+        }),
+      })
+      const result = await res.json()
+      if (result.success) {
         router.push('/socios/gracias')
       } else {
-        const { error } = await res.json().catch(() => ({}))
-        setError(error || 'No se pudo enviar. Intentá de nuevo.')
+        setError(result.message || 'No se pudo enviar. Intentá de nuevo.')
         setSubmitting(false)
       }
     } catch {
@@ -72,7 +84,7 @@ export default function InscripcionPage() {
           <div className="max-w-3xl mx-auto text-center mb-8">
             <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Solicitud de asociación</h1>
             <p className="text-gray-600">
-              Completá tus datos y adjuntá tu CV. La Comisión Directiva evaluará tu solicitud y te responderemos por email.
+              Completá tus datos y sumá el link a tu CV. La Comisión Directiva evaluará tu solicitud y te responderemos por email.
             </p>
           </div>
 
@@ -141,19 +153,20 @@ export default function InscripcionPage() {
 
             <Field label="Breve descripción de tu desempeño actual" name="desempeno" as="textarea" placeholder="Opcional" />
 
-            {/* CV */}
+            {/* CV por link */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1.5">
-                Curriculum Vitae (PDF) <span className="text-red-500">*</span>
+              <label htmlFor="cv_link" className="block text-sm font-medium text-gray-700 mb-1.5">
+                Link a tu CV <span className="text-red-500">*</span>
               </label>
               <input
-                type="file"
-                name="attachment"
-                accept=".pdf,.doc,.docx"
+                id="cv_link"
+                type="url"
+                name="cv_link"
                 required
-                className="w-full text-sm text-gray-700 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-primary-600 file:text-white hover:file:bg-primary-700 file:cursor-pointer border border-gray-300 rounded-lg bg-white p-2"
+                placeholder="https://drive.google.com/..."
+                className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none transition bg-white"
               />
-              <p className="mt-1.5 text-xs text-gray-500">Adjuntá tu CV en PDF (máx. unos pocos MB).</p>
+              <p className="mt-1.5 text-xs text-gray-500">Subí tu CV a Google Drive o Dropbox y pegá el enlace (con permiso de lectura habilitado).</p>
             </div>
 
             <label className="flex items-start gap-2 text-sm text-gray-700">

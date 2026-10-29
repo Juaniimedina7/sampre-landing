@@ -32,7 +32,7 @@ export default function GraciasPage() {
           </div>
           <h1 className="text-2xl font-bold text-gray-900 mb-3">¡Solicitud recibida!</h1>
           <p className="text-gray-600 leading-relaxed mb-6">
-            Recibimos tu solicitud y tu CV. Te enviamos un email de confirmación.
+            Recibimos tu solicitud y el link a tu CV. La Comisión Directiva la va a revisar.
           </p>
           <div className="text-left bg-gray-50 border border-gray-100 rounded-lg p-4 mb-8">
             <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">Próximos pasos</p>

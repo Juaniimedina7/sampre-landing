@@ -45,17 +45,22 @@ export async function POST(req) {
       attachments: [{ filename: file.name || 'cv.pdf', content: buffer }],
     })
 
-    // 2) Acuse al solicitante
-    await sendMail({
-      to: email,
-      subject: 'Recibimos tu solicitud de asociación a SAMPRE',
-      html: `<div style="font-family:system-ui,sans-serif;font-size:15px;line-height:1.6;color:#374151">
-        <p>¡Gracias por tu interés en asociarte a <strong>SAMPRE</strong>!</p>
-        <p>Recibimos tu solicitud y tu CV. La Comisión Directiva la evaluará y te responderemos por este medio.
-        Si es aprobada, te enviaremos los datos para abonar la cuota societaria.</p>
-        <p>Consultas: <a href="mailto:info@sampre.com.ar">info@sampre.com.ar</a></p>
-      </div>`,
-    })
+    // 2) Acuse al solicitante (best-effort: sin dominio verificado Resend no deja
+    //    enviar a terceros; que falle no debe romper la recepción de la solicitud).
+    try {
+      await sendMail({
+        to: email,
+        subject: 'Recibimos tu solicitud de asociación a SAMPRE',
+        html: `<div style="font-family:system-ui,sans-serif;font-size:15px;line-height:1.6;color:#374151">
+          <p>¡Gracias por tu interés en asociarte a <strong>SAMPRE</strong>!</p>
+          <p>Recibimos tu solicitud y tu CV. La Comisión Directiva la evaluará y te responderemos por este medio.
+          Si es aprobada, te enviaremos los datos para abonar la cuota societaria.</p>
+          <p>Consultas: <a href="mailto:info@sampre.com.ar">info@sampre.com.ar</a></p>
+        </div>`,
+      })
+    } catch (e) {
+      console.warn('[inscripcion] acuse no enviado:', e?.message)
+    }
 
     return Response.json({ ok: true })
   } catch (err) {

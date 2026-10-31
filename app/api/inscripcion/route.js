@@ -1,8 +1,7 @@
 // Solicitud de socio: multipart con CV adjunto. Manda la solicitud a info@
 // con el CV adjunto y un acuse automático al solicitante.
 import { sendMail, rowsToHtml, MAIL_TO } from '@/lib/email'
-
-const MAX_CV_BYTES = 4 * 1024 * 1024 // 4MB (límite de body de Vercel es 4.5MB)
+import { isPdf, safePdfName, MAX_CV_BYTES } from '@/lib/upload'
 
 export async function POST(req) {
   let form
@@ -35,6 +34,13 @@ export async function POST(req) {
   const categoria = data.categoria || 'Socio'
   const buffer = Buffer.from(await file.arrayBuffer())
 
+  // Seguridad: validamos por magic bytes, no por extensión ni content-type
+  // (los controla el cliente). Solo aceptamos PDF real.
+  if (!isPdf(buffer)) {
+    return Response.json({ error: 'El CV debe ser un archivo PDF válido' }, { status: 415 })
+  }
+  const filename = safePdfName(file.name)
+
   try {
     // 1) Solicitud a la institución, con CV adjunto
     await sendMail({
@@ -42,7 +48,7 @@ export async function POST(req) {
       subject: `Nueva solicitud de socio — ${categoria}`,
       html: rowsToHtml(data),
       replyTo: email,
-      attachments: [{ filename: file.name || 'cv.pdf', content: buffer }],
+      attachments: [{ filename, content: buffer }],
     })
 
     // 2) Acuse al solicitante (best-effort: sin dominio verificado Resend no deja

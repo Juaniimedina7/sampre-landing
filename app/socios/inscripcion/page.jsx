@@ -6,7 +6,7 @@ import Link from 'next/link'
 import { ArrowLeft, Send, ClipboardList, ShieldCheck } from 'lucide-react'
 import { logos, getImageUrl } from '@/lib/images'
 
-const WEB3FORMS_KEY = '63a667c6-b4cc-467d-adc0-35632c56da9c'
+const MAX_CV_BYTES = 4 * 1024 * 1024 // 4MB
 
 const requisitos = {
   activo: [
@@ -35,25 +35,24 @@ export default function InscripcionPage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+    // Validación de UX (la real está en el server por magic bytes).
+    const file = e.target.attachment?.files?.[0]
+    if (!file) { setError('Adjuntá tu CV en PDF.'); return }
+    if (file.type !== 'application/pdf') { setError('El CV debe ser un archivo PDF.'); return }
+    if (file.size > MAX_CV_BYTES) { setError('El CV supera los 4MB.'); return }
+
     setSubmitting(true)
     setError(null)
     try {
-      const data = Object.fromEntries(new FormData(e.target).entries())
-      const res = await fetch('https://api.web3forms.com/submit', {
+      const res = await fetch('/api/inscripcion', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify({
-          access_key: WEB3FORMS_KEY,
-          subject: `Nueva solicitud de socio — ${data.categoria || ''}`,
-          from_name: 'SAMPRE Web',
-          ...data,
-        }),
+        body: new FormData(e.target), // multipart; el browser pone el boundary
       })
-      const result = await res.json()
-      if (result.success) {
+      const result = await res.json().catch(() => ({}))
+      if (res.ok && result.ok) {
         router.push('/socios/gracias')
       } else {
-        setError(result.message || 'No se pudo enviar. Intentá de nuevo.')
+        setError(result.error || 'No se pudo enviar. Intentá de nuevo.')
         setSubmitting(false)
       }
     } catch {
@@ -84,7 +83,7 @@ export default function InscripcionPage() {
           <div className="max-w-3xl mx-auto text-center mb-8">
             <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Solicitud de asociación</h1>
             <p className="text-gray-600">
-              Completá tus datos y sumá el link a tu CV. La Comisión Directiva evaluará tu solicitud y te responderemos por email.
+              Completá tus datos y adjuntá tu CV en PDF. La Comisión Directiva evaluará tu solicitud y te responderemos por email.
             </p>
           </div>
 
@@ -153,20 +152,20 @@ export default function InscripcionPage() {
 
             <Field label="Breve descripción de tu desempeño actual" name="desempeno" as="textarea" placeholder="Opcional" />
 
-            {/* CV por link */}
+            {/* CV como archivo PDF */}
             <div>
-              <label htmlFor="cv_link" className="block text-sm font-medium text-gray-700 mb-1.5">
-                Link a tu CV <span className="text-red-500">*</span>
+              <label htmlFor="attachment" className="block text-sm font-medium text-gray-700 mb-1.5">
+                Tu CV (PDF) <span className="text-red-500">*</span>
               </label>
               <input
-                id="cv_link"
-                type="url"
-                name="cv_link"
+                id="attachment"
+                type="file"
+                name="attachment"
+                accept="application/pdf,.pdf"
                 required
-                placeholder="https://drive.google.com/..."
-                className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none transition bg-white"
+                className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none transition bg-white file:mr-4 file:rounded-md file:border-0 file:bg-primary-50 file:px-4 file:py-2 file:text-sm file:font-semibold file:text-primary-700 hover:file:bg-primary-100"
               />
-              <p className="mt-1.5 text-xs text-gray-500">Subí tu CV a Google Drive o Dropbox y pegá el enlace (con permiso de lectura habilitado).</p>
+              <p className="mt-1.5 text-xs text-gray-500">Adjuntá tu CV en formato PDF (máximo 4MB).</p>
             </div>
 
             <label className="flex items-start gap-2 text-sm text-gray-700">
